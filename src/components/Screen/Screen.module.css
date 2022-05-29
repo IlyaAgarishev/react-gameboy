@@ -1,0 +1,31 @@
+.screenWrapper {
+  height: calc(100% - 90px);
+  background: #161616;
+  border-radius: 20px;
+  padding: 40px 70px;
+}
+
+.battery {
+  padding: 8px;
+  background: #f3183f;
+  border: 2px solid #7f0928;
+  border-radius: 100px;
+  position: absolute;
+  margin-top: 100px;
+  margin-left: -40px;
+}
+
+.screen {
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  border-radius: 20px;
+  background: #333532;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.screen div {
+  border: 1px solid #333532;
+  background: #3a3c39;
+}
