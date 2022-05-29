@@ -1,5 +1,6 @@
 {
-  "name": "kw-quote-generator",
+  "name": "react-snake",
+  "author": "Ilya Agarishev",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
