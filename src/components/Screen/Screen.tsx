@@ -1,17 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
-import ControlKey from "../../models/ControlKey";
-import Directions from "../../models/Directions";
 import styles from "./Screen.module.css";
-import { generateRandomFoodPosition } from "./screen-utils";
-import { isControlKey } from "../../hooks/useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
 import useSnake from "../../hooks/useSnake";
 
 const Screen: React.FC = () => {
-  const { coordinates } = useSnake();
-
-  const [randomFoodPosition, setRandomFoodPosition] = useState<number>(
-    generateRandomFoodPosition()
-  );
+  const { coordinates, randomFoodCoordinate } = useSnake();
 
   return (
     <div className={styles.screenWrapper}>
@@ -26,7 +18,7 @@ const Screen: React.FC = () => {
               background = "#57D99C";
             }
 
-            if (randomFoodPosition === index) {
+            if (randomFoodCoordinate === index) {
               background = "#FD0E55";
             }
 
