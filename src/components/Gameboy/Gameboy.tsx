@@ -4,12 +4,10 @@ import Screen from "../Screen";
 import useLastControlKeyPressed from "../../hooks/useLastControlKeyPressed";
 
 const Gameboy = () => {
-  const lastControlKeyPressed = useLastControlKeyPressed();
-
   return (
     <div className={styles.gameboy}>
       <div className={styles.upperBlock}>
-        <Screen lastControlKeyPressed={lastControlKeyPressed} />
+        <Screen />
       </div>
       <div className={styles.downBlock}></div>
     </div>

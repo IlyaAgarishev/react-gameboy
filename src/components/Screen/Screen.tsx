@@ -4,55 +4,14 @@ import Directions from "../../models/Directions";
 import styles from "./Screen.module.css";
 import { generateRandomFoodPosition } from "./screen-utils";
 import { isControlKey } from "../../hooks/useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
+import useSnake from "../../hooks/useSnake";
 
-interface IScreen {
-  lastControlKeyPressed: ControlKey;
-}
+const Screen: React.FC = () => {
+  const { coordinates } = useSnake();
 
-const directions: Directions = {
-  ArrowUp: -12,
-  ArrowDown: 12,
-  ArrowRight: 1,
-  ArrowLeft: -1,
-};
-
-const getDirection = (key: ControlKey) => {
-  return directions[key];
-};
-
-const Screen: React.FC<IScreen> = ({ lastControlKeyPressed }) => {
-  const [coordinates, setCoordinates] = useState([0, 1, 2, 3]);
   const [randomFoodPosition, setRandomFoodPosition] = useState<number>(
     generateRandomFoodPosition()
   );
-
-  const changeSnakePosition = (coordinateNumber: number) => {
-    const newCoordinates = [...coordinates];
-    newCoordinates.shift();
-    const coordinateToPush =
-      newCoordinates[newCoordinates.length - 1] + coordinateNumber;
-    newCoordinates.push(coordinateToPush);
-
-    setCoordinates(newCoordinates);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      changeSnakePosition(getDirection(lastControlKeyPressed));
-    }, 150);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [coordinates, lastControlKeyPressed]);
-
-  useEffect(() => {
-    document.onkeydown = ({ key }) => {
-      if (isControlKey(key)) {
-        changeSnakePosition(getDirection(key));
-      }
-    };
-  }, [coordinates]);
 
   return (
     <div className={styles.screenWrapper}>
