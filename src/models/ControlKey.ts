@@ -1,9 +1,4 @@
-const controlKeys = [
-  "ArrowUp",
-  "ArrowDown",
-  "ArrowRight",
-  "ArrowLeft",
-] as const;
+import { controlKeys } from "../hooks/useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
 
 type ControlKey = typeof controlKeys[number];
 

@@ -1,14 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import ControlKey from "../models/ControlKey";
-
-const controlKeys = [
-  "ArrowUp",
-  "ArrowDown",
-  "ArrowRight",
-  "ArrowLeft",
-] as const;
-
-const isControlKey = (x: any): x is ControlKey => controlKeys.includes(x);
+import ControlKey from "../../models/ControlKey";
+import { isControlKey } from "./utils-hook_useLastControlKeyPressed";
 
 const useLastControlKeyPressed = (): ControlKey => {
   const [state, setState] = useState<ControlKey>("ArrowRight");

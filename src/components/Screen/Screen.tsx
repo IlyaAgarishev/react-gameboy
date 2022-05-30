@@ -3,6 +3,7 @@ import ControlKey from "../../models/ControlKey";
 import Directions from "../../models/Directions";
 import styles from "./Screen.module.css";
 import { generateRandomFoodPosition } from "./screen-utils";
+import { isControlKey } from "../../hooks/useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
 
 interface IScreen {
   lastControlKeyPressed: ControlKey;
@@ -47,10 +48,8 @@ const Screen: React.FC<IScreen> = ({ lastControlKeyPressed }) => {
 
   useEffect(() => {
     document.onkeydown = ({ key }) => {
-      const direction = directions[key as ControlKey];
-
-      if (direction) {
-        changeSnakePosition(direction);
+      if (isControlKey(key)) {
+        changeSnakePosition(getDirection(key));
       }
     };
   }, [coordinates]);
