@@ -7,8 +7,8 @@
   border-bottom-right-radius: 100px;
   width: var(--desktop-width-gameboy);
   height: var(--desktop-height-gameboy);
-  box-shadow: 10px 10px 0px #999, 15px 15px 0px #999, 3px 3px 0px #999,
-    4px 4px 0px #999, 5px 5px 0px #999, 6px 6px 0px #999;
+  box-shadow: 10px 10px 0px #afafaf, 15px 15px 0px #afafaf, 3px 3px 0px #afafaf,
+    4px 4px 0px #afafaf, 5px 5px 0px #afafaf, 6px 6px 0px #afafaf;
 }
 
 .upperBlock {
