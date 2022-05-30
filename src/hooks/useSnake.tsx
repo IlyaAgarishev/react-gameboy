@@ -1,15 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import ControlKey from "../models/ControlKey";
-import Directions from "../models/Directions";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import { isControlKey } from "./useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
-
-const directions: Directions = {
-  ArrowUp: -12,
-  ArrowDown: 12,
-  ArrowRight: 1,
-  ArrowLeft: -1,
-};
+import Snake from "../classes/Snake";
 
 const generateRandomFoodCoordinate = (): number => {
   return Math.floor(Math.random() * 144);
@@ -17,49 +9,23 @@ const generateRandomFoodCoordinate = (): number => {
 
 const useSnake = () => {
   const [coordinates, setCoordinates] = useState([0, 1, 2, 3]);
+  const lastControlKeyPressed = useLastControlKeyPressed();
+
+  const snake = new Snake({
+    coordinates,
+    setCoordinates,
+    lastControlKeyPressed,
+  });
+
   const [keyPressed, setKeyPressed] = useState("");
   const [randomFoodCoordinate, setRandomFoodCoordinate] = useState<number>(
     generateRandomFoodCoordinate()
   );
-  const lastControlKeyPressed = useLastControlKeyPressed();
-
-  const changeSnakeCoordinates = (coordinateNumber: number) => {
-    const newCoordinates = [...coordinates];
-    newCoordinates.shift();
-    const coordinateToPush =
-      newCoordinates[newCoordinates.length - 1] + coordinateNumber;
-    newCoordinates.push(coordinateToPush);
-
-    setCoordinates(newCoordinates);
-  };
-
-  const increaseTheSizeOfSnake = (coordinateNumber: number) => {
-    const newCoordinates = [...coordinates];
-    const coordinateToPush =
-      newCoordinates[newCoordinates.length - 1] + coordinateNumber;
-    newCoordinates.push(coordinateToPush);
-
-    setCoordinates(newCoordinates);
-  };
-
-  const getDirection = (key: ControlKey) => {
-    return directions[key];
-  };
-
-  const changeSnakeDirection = (key: string) => {
-    if (isControlKey(key)) {
-      changeSnakeCoordinates(getDirection(key));
-    }
-  };
-
-  const moveTheSnakeByOneSquare = () => {
-    changeSnakeCoordinates(getDirection(lastControlKeyPressed));
-  };
 
   // Keep snake moving
   useEffect(() => {
     const interval = setInterval(() => {
-      moveTheSnakeByOneSquare();
+      snake.moveTheSnakeByOneSquare();
     }, 150);
 
     return () => {
@@ -71,7 +37,7 @@ const useSnake = () => {
   useEffect(() => {
     const onKeyDown = ({ key }: any) => {
       setKeyPressed(key);
-      changeSnakeDirection(key);
+      snake.changeSnakeDirection(key);
     };
 
     document.addEventListener("keydown", onKeyDown);
@@ -88,7 +54,7 @@ const useSnake = () => {
       setRandomFoodCoordinate(generateRandomFoodCoordinate());
 
       if (isControlKey(keyPressed)) {
-        increaseTheSizeOfSnake(getDirection(keyPressed));
+        snake.increaseTheSizeOfSnake(snake.getDirection(keyPressed));
       }
     }
   }, [coordinates, keyPressed, randomFoodCoordinate]);
