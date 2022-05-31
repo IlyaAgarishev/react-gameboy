@@ -10,17 +10,16 @@ const generateRandomFoodCoordinate = (): number => {
 const useSnake = () => {
   const [coordinates, setCoordinates] = useState([0, 1, 2, 3]);
   const lastControlKeyPressed = useLastControlKeyPressed();
+  const [keyPressed, setKeyPressed] = useState("");
+  const [randomFoodCoordinate, setRandomFoodCoordinate] = useState<number>(
+    generateRandomFoodCoordinate()
+  );
 
   const snake = new Snake({
     coordinates,
     setCoordinates,
     lastControlKeyPressed,
   });
-
-  const [keyPressed, setKeyPressed] = useState("");
-  const [randomFoodCoordinate, setRandomFoodCoordinate] = useState<number>(
-    generateRandomFoodCoordinate()
-  );
 
   // Keep snake moving
   useEffect(() => {

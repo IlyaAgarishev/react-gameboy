@@ -1,31 +1,45 @@
-import { memo } from "react";
+import { DirectionsEnum } from "../../enums/DirectionsEnum";
+import ControlKey from "../../models/ControlKey";
 import DirectionalButton from "../DirectionalButton/DirectionalButton";
 import styles from "./DirectionalButtons.module.css";
 
-enum Directions {
-  ArrowUp = "ArrowUp",
-  ArrowDown = "ArrowDown",
-  ArrowRight = "ArrowRight",
-  ArrowLeft = "ArrowLeft",
-}
+const pressKey = (key: ControlKey) => {
+  document.dispatchEvent(new KeyboardEvent("keydown", { key }));
+};
 
 const DirectionalButtons = () => {
+  const moveLeft = () => {
+    pressKey(DirectionsEnum.ArrowLeft);
+  };
+
+  const moveRight = () => {
+    pressKey(DirectionsEnum.ArrowRight);
+  };
+
+  const moveUp = () => {
+    pressKey(DirectionsEnum.ArrowUp);
+  };
+
+  const moveDown = () => {
+    pressKey(DirectionsEnum.ArrowDown);
+  };
+
   return (
     <div className={styles.controls}>
-      <div className={styles.moveLeft}>
-        <DirectionalButton direction={Directions.ArrowLeft} />
+      <div className={styles.moveLeft} onClick={moveLeft}>
+        <DirectionalButton direction={DirectionsEnum.ArrowLeft} />
       </div>
-      <div className={styles.moveUp}>
-        <DirectionalButton direction={Directions.ArrowUp} />
+      <div className={styles.moveUp} onClick={moveUp}>
+        <DirectionalButton direction={DirectionsEnum.ArrowUp} />
       </div>
-      <div className={styles.moveRight}>
-        <DirectionalButton direction={Directions.ArrowRight} />
+      <div className={styles.moveRight} onClick={moveRight}>
+        <DirectionalButton direction={DirectionsEnum.ArrowRight} />
       </div>
-      <div className={styles.moveDown}>
-        <DirectionalButton direction={Directions.ArrowDown} />
+      <div className={styles.moveDown} onClick={moveDown}>
+        <DirectionalButton direction={DirectionsEnum.ArrowDown} />
       </div>
     </div>
   );
 };
 
-export default memo(DirectionalButtons);
+export default DirectionalButtons;

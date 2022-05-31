@@ -1,12 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
+import useSnake from "../../hooks/useSnake";
 import styles from "./Screen.module.css";
 
-interface IScreen {
-  coordinates: number[];
-  randomFoodCoordinate: number;
-}
+const Screen: React.FC = () => {
+  const { coordinates, randomFoodCoordinate } = useSnake();
 
-const Screen: React.FC<IScreen> = ({ coordinates, randomFoodCoordinate }) => {
   return (
     <div className={styles.screenWrapper}>
       <div className={styles.battery} />
