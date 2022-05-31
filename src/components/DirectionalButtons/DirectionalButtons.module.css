@@ -1,0 +1,25 @@
+.controls {
+  padding: 20px;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.controls div {
+  position: absolute;
+}
+
+.moveLeft {
+  margin-left: -50px;
+}
+
+.moveUp {
+  margin-top: -50px;
+}
+
+.moveRight {
+  margin-left: 50px;
+}
+
+.moveDown {
+  margin-top: 50px;
+}

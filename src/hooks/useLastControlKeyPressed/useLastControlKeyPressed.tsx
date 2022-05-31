@@ -1,25 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
 import ControlKey from "../../models/ControlKey";
+import useOnKeyDown from "../useOnKeyDown";
 import { isControlKey } from "./utils-hook_useLastControlKeyPressed";
 
 const useLastControlKeyPressed = (): ControlKey => {
-  const [state, setState] = useState<ControlKey>("ArrowRight");
-
-  const onKeyDown = ({ key }: any) => {
-    if (isControlKey(key)) {
-      setState(key);
-    }
-  };
+  const keyPressed = useOnKeyDown();
+  const [controlKeyPressed, setControlKeyPressed] =
+    useState<ControlKey>("ArrowRight");
 
   useEffect(() => {
-    document.addEventListener("keydown", onKeyDown);
+    if (isControlKey(keyPressed)) {
+      setControlKeyPressed(keyPressed);
+    }
+  }, [keyPressed]);
 
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, []);
-
-  return state;
+  return controlKeyPressed;
 };
 
 export default useLastControlKeyPressed;

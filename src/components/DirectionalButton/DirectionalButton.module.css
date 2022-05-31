@@ -1,0 +1,26 @@
+.dicrectionalButton {
+  background: #afafaf;
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.dicrectionalButton span {
+  display: block;
+  padding: 25px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  background: #333532;
+  color: white;
+  transform: translateY(-3px) translateX(-3px);
+}
+
+.isActive span {
+  transform: none;
+}
+
+.dicrectionalButton:active span {
+  transform: none;
+}
