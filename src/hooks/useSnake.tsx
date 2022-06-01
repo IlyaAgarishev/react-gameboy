@@ -7,9 +7,20 @@ const generateRandomFoodCoordinate = (): number => {
   return Math.floor(Math.random() * 144);
 };
 
+const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
+  const copiedCoordinates = [...coordinates];
+  copiedCoordinates.pop();
+
+  return copiedCoordinates;
+};
+
+const defaultCoordinates = [0, 1, 2, 3];
+
 const useSnake = () => {
-  const [coordinates, setCoordinates] = useState([0, 1, 2, 3]);
-  const lastControlKeyPressed = useLastControlKeyPressed();
+  const [coordinates, setCoordinates] = useState(defaultCoordinates);
+  const [snakeIsStopped, setSnakeIsStopped] = useState(false);
+  const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
+    useLastControlKeyPressed();
   const [keyPressed, setKeyPressed] = useState("");
   const [randomFoodCoordinate, setRandomFoodCoordinate] = useState<number>(
     generateRandomFoodCoordinate()
@@ -23,29 +34,34 @@ const useSnake = () => {
 
   // Keep snake moving
   useEffect(() => {
-    const interval = setInterval(() => {
-      snake.moveTheSnakeByOneSquare();
-    }, 150);
+    if (!snakeIsStopped) {
+      const interval = setInterval(() => {
+        snake.moveTheSnakeByOneSquare();
+      }, 150);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [coordinates, lastControlKeyPressed]);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [coordinates, lastControlKeyPressed, snakeIsStopped]);
 
   // Change snake direction onkeydown
   useEffect(() => {
-    const onKeyDown = ({ key }: any) => {
-      setKeyPressed(key);
-      snake.changeSnakeDirection(key);
-    };
+    if (!snakeIsStopped) {
+      const onKeyDown = ({ key }: any) => {
+        setKeyPressed(key);
+        snake.changeSnakeDirection(key);
+      };
 
-    document.addEventListener("keydown", onKeyDown);
+      document.addEventListener("keydown", onKeyDown);
 
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [coordinates]);
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+      };
+    }
+  }, [coordinates, snakeIsStopped]);
 
+  // Snake Eating logic
   useEffect(() => {
     const lastSnakeCoordinate = coordinates[coordinates.length - 1];
 
@@ -58,8 +74,30 @@ const useSnake = () => {
     }
   }, [coordinates, keyPressed, randomFoodCoordinate]);
 
+  // Snake bites itself logic
+  useEffect(() => {
+    const lastSnakeCoordinate = coordinates[coordinates.length - 1];
+
+    const coordinatesWithoutTheLastOne =
+      getCoordinatesWithoutTheLastOne(coordinates);
+
+    const snakeBitesItself = coordinatesWithoutTheLastOne.some(
+      (coordinate) => coordinate === lastSnakeCoordinate
+    );
+
+    if (snakeBitesItself) {
+      setSnakeIsStopped(true);
+
+      setTimeout(() => {
+        setCoordinates(defaultCoordinates);
+        setDefaultLastControlKeyPressed();
+        setSnakeIsStopped(false);
+      }, 3000);
+    }
+  }, [coordinates]);
+
   // Return the object from hook
-  return { coordinates, randomFoodCoordinate };
+  return { coordinates, randomFoodCoordinate, snakeIsStopped };
 };
 
 export default useSnake;

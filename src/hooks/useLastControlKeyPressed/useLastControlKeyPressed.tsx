@@ -3,18 +3,29 @@ import ControlKey from "../../models/ControlKey";
 import useOnKeyDown from "../useOnKeyDown";
 import { isControlKey } from "./utils-hook_useLastControlKeyPressed";
 
-const useLastControlKeyPressed = (): ControlKey => {
+interface ReturnUseLastControlKeyPressed {
+  lastControlKeyPressed: ControlKey;
+  setDefaultLastControlKeyPressed: () => void;
+}
+
+const useLastControlKeyPressed = (): ReturnUseLastControlKeyPressed => {
+  const defaulKey = "ArrowRight";
+
   const keyPressed = useOnKeyDown();
-  const [controlKeyPressed, setControlKeyPressed] =
-    useState<ControlKey>("ArrowRight");
+  const [lastControlKeyPressed, setLastControlKeyPressed] =
+    useState<ControlKey>(defaulKey);
 
   useEffect(() => {
     if (isControlKey(keyPressed)) {
-      setControlKeyPressed(keyPressed);
+      setLastControlKeyPressed(keyPressed);
     }
   }, [keyPressed]);
 
-  return controlKeyPressed;
+  const setDefaultLastControlKeyPressed = () => {
+    setLastControlKeyPressed(defaulKey);
+  };
+
+  return { lastControlKeyPressed, setDefaultLastControlKeyPressed };
 };
 
 export default useLastControlKeyPressed;

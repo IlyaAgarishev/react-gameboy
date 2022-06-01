@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import useSnake from "../../hooks/useSnake";
 import styles from "./Screen.module.css";
 
 const Screen: React.FC = () => {
-  const { coordinates, randomFoodCoordinate } = useSnake();
+  const { coordinates, randomFoodCoordinate, snakeIsStopped } = useSnake();
 
   return (
     <div className={styles.screenWrapper}>
@@ -22,11 +22,20 @@ const Screen: React.FC = () => {
               background = "#FD0E55";
             }
 
+            const getBorderColor = () => {
+              if (snakeIsStopped) {
+                return "#FD0E55";
+              }
+
+              return "#333532";
+            };
+
             return (
               <div
                 key={index}
                 style={{
                   background,
+                  border: `1px solid ${getBorderColor()}`,
                 }}
               />
             );

@@ -1,6 +1,5 @@
 import KeyboardEmulator from "../../classes/KeyboardEmulator";
 import { DirectionsEnum } from "../../enums/DirectionsEnum";
-import ControlKey from "../../models/ControlKey";
 import DirectionalButton from "../DirectionalButton/DirectionalButton";
 import styles from "./DirectionalButtons.module.css";
 
