@@ -1,6 +1,6 @@
 import useSnake from "../../hooks/useSnake";
 import styles from "./SnakeUI.module.css";
-import { getBackground, getBorder } from "./utils-snake-ui";
+import { getBackground, getBorder, getClassName } from "./utils-snake-ui";
 
 const SnakeUI = () => {
   const { coordinates, randomFoodCoordinate, snakeIsStopped } = useSnake();
@@ -16,10 +16,16 @@ const SnakeUI = () => {
             randomFoodCoordinate,
           });
           const border = getBorder(snakeIsStopped);
+          const className = getClassName({
+            coordinates,
+            snakeIsStopped,
+            index,
+          });
 
           return (
             <div
               key={index}
+              className={className}
               style={{
                 background,
                 border,

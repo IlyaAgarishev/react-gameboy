@@ -1,7 +1,7 @@
 import { Colors } from "../../enums/Colors";
+import styles from "./SnakeUI.module.css";
 
 // getBorder logic
-
 export const getBorder = (snakeIsStopped: boolean): string => {
   if (snakeIsStopped) {
     return `1px solid ${Colors.Red}`;
@@ -11,7 +11,6 @@ export const getBorder = (snakeIsStopped: boolean): string => {
 };
 
 // getBackground logic
-
 interface IGetBackground {
   randomFoodCoordinate: number;
   coordinates: number[];
@@ -32,4 +31,21 @@ export const getBackground = ({
   }
 
   return Colors.SquareBackground;
+};
+
+// getClassName logic
+interface IGetClassName {
+  coordinates: number[];
+  index: number;
+  snakeIsStopped: boolean;
+}
+
+export const getClassName = ({
+  coordinates,
+  snakeIsStopped,
+  index,
+}: IGetClassName) => {
+  if (coordinates.some((cordinate) => cordinate === index) && snakeIsStopped) {
+    return styles.snakeBlinks;
+  }
 };

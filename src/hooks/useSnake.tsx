@@ -92,6 +92,7 @@ const useSnake = () => {
         setCoordinates(defaultCoordinates);
         setDefaultLastControlKeyPressed();
         setSnakeIsStopped(false);
+        setRandomFoodCoordinate(generateRandomFoodCoordinate());
       }, 3000);
     }
   }, [coordinates]);

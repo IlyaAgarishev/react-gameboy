@@ -1,0 +1,15 @@
+.snakeBlinks {
+  animation-duration: 0.5s;
+  animation-name: snakeBlinksKeyFrame;
+  animation-iteration-count: infinite;
+}
+
+@keyframes snakeBlinksKeyFrame {
+  from {
+    background: #57d99c;
+  }
+
+  to {
+    background: #3a3c39;
+  }
+}
