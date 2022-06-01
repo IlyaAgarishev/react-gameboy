@@ -24,8 +24,3 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
-
-.screen div {
-  border: 1px solid #333532;
-  background: #3a3c39;
-}
