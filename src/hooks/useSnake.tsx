@@ -26,6 +26,8 @@ const useSnake = () => {
     generateRandomFoodCoordinate()
   );
 
+  console.log();
+
   const snake = new Snake({
     coordinates,
     setCoordinates,
