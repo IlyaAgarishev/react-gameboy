@@ -2,10 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import { isControlKey } from "./useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
 import Snake from "../classes/Snake";
-
-const generateRandomFoodCoordinate = (): number => {
-  return Math.floor(Math.random() * 144);
-};
+import useRandomFoodCoordinate from "./useRandomFood";
 
 const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
   const copiedCoordinates = [...coordinates];
@@ -22,9 +19,8 @@ const useSnake = () => {
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
   const [keyPressed, setKeyPressed] = useState("");
-  const [randomFoodCoordinate, setRandomFoodCoordinate] = useState<number>(
-    generateRandomFoodCoordinate()
-  );
+  const { randomFoodCoordinate, generateRandomFoodCoordinate } =
+    useRandomFoodCoordinate();
 
   const snake = new Snake({
     coordinates,
@@ -66,7 +62,7 @@ const useSnake = () => {
     const lastSnakeCoordinate = coordinates[coordinates.length - 1];
 
     if (lastSnakeCoordinate === randomFoodCoordinate) {
-      setRandomFoodCoordinate(generateRandomFoodCoordinate());
+      generateRandomFoodCoordinate();
 
       if (isControlKey(keyPressed)) {
         snake.increaseTheSizeOfSnake(snake.getDirection(keyPressed));
@@ -92,7 +88,7 @@ const useSnake = () => {
         setCoordinates(defaultCoordinates);
         setDefaultLastControlKeyPressed();
         setSnakeIsStopped(false);
-        setRandomFoodCoordinate(generateRandomFoodCoordinate());
+        generateRandomFoodCoordinate();
       }, 3000);
     }
   }, [coordinates]);
