@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import ControlKey from "../../models/ControlKey";
 import useOnKeyDown from "../useOnKeyDown";
-import { isControlKey } from "./utils-hook_useLastControlKeyPressed";
+import {
+  isControlKey,
+  isRightKey,
+} from "./utils-hook_useLastControlKeyPressed";
 
 interface ReturnUseLastControlKeyPressed {
   lastControlKeyPressed: ControlKey;
@@ -16,7 +19,10 @@ const useLastControlKeyPressed = (): ReturnUseLastControlKeyPressed => {
     useState<ControlKey>(defaulKey);
 
   useEffect(() => {
-    if (isControlKey(keyPressed)) {
+    if (
+      isControlKey(keyPressed) &&
+      isRightKey(keyPressed, lastControlKeyPressed)
+    ) {
       setLastControlKeyPressed(keyPressed);
     }
   }, [keyPressed]);
