@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 
 const generateRandomCoordinate = (): number => {
   return Math.floor(Math.random() * 144);

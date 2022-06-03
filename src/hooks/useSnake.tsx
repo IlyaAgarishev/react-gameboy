@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
-import { isControlKey } from "./useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
 import Snake from "../classes/Snake";
 import useRandomFoodCoordinate from "./useRandomFood";
 

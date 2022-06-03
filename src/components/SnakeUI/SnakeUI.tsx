@@ -1,5 +1,4 @@
 import useSnake from "../../hooks/useSnake";
-import styles from "./SnakeUI.module.css";
 import { getBackground, getBorder, getClassName } from "./utils-snake-ui";
 
 const SnakeUI = () => {

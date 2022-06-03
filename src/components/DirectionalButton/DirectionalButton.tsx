@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import ControlKey from "../../models/ControlKey";
 import styles from "./DirectionalButton.module.css";
 
