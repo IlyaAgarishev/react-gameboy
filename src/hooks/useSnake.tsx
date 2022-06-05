@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import Snake from "../classes/Snake";
 import useRandomFoodCoordinate from "./useRandomFood";
+import useSnakeIsOutOfRange from "./useSnakeIsOutOfRange";
 
 const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
   const copiedCoordinates = [...coordinates];
@@ -14,40 +15,19 @@ const defaultCoordinates = [0, 1, 2, 3];
 
 const useSnake = () => {
   const [coordinates, setCoordinates] = useState(defaultCoordinates);
-  const [snakeIsOutOfRange, setSnakeIsOutOfRange] = useState(false);
   const [snakeIsStopped, setSnakeIsStopped] = useState(false);
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
   const { randomFoodCoordinate, generateRandomFoodCoordinate } =
     useRandomFoodCoordinate();
+  const { snakeIsOutOfRange, setDefaultSnakeIsOutOfRange } =
+    useSnakeIsOutOfRange(coordinates);
 
   const snake = new Snake({
     coordinates,
     setCoordinates,
     lastControlKeyPressed,
   });
-
-  // Snake is out of range logic
-  useEffect(() => {
-    const lastSnakeCoordinate = coordinates[coordinates.length - 1];
-    const coordinateBeforeLast = coordinates[coordinates.length - 2];
-
-    if (lastSnakeCoordinate % 12 === 0 && coordinateBeforeLast % 3 === 2) {
-      setSnakeIsOutOfRange(true);
-    }
-
-    if (coordinateBeforeLast % 12 === 0 && lastSnakeCoordinate % 3 === 2) {
-      setSnakeIsOutOfRange(true);
-    }
-
-    const arr = Array(144)
-      .fill("")
-      .map((el, i) => i);
-
-    if (arr[lastSnakeCoordinate] === undefined) {
-      setSnakeIsOutOfRange(true);
-    }
-  }, [coordinates]);
 
   // Keep snake moving
   useEffect(() => {
@@ -97,7 +77,7 @@ const useSnake = () => {
       setTimeout(() => {
         setCoordinates(defaultCoordinates);
         setDefaultLastControlKeyPressed();
-        setSnakeIsOutOfRange(false);
+        setDefaultSnakeIsOutOfRange();
         setSnakeIsStopped(false);
         generateRandomFoodCoordinate();
       }, 3000);
