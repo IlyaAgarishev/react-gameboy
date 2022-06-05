@@ -1,16 +1,26 @@
 import { useState } from "react";
+import { matrix, sizeOfMatrix } from "../constants";
 
-const generateRandomCoordinate = (): number => {
-  return Math.floor(Math.random() * 144);
+const generateRandomCoordinate = (coordinates: number[]): number => {
+  const matrixWithoutSnakeCoordinates = matrix.filter(
+    (el) => !coordinates.includes(el)
+  );
+
+  const randomIndex = Math.floor(
+    Math.random() * matrixWithoutSnakeCoordinates.length
+  );
+
+  return matrixWithoutSnakeCoordinates[randomIndex];
 };
 
-const useRandomFoodCoordinate = () => {
+const useRandomFoodCoordinate = (coordinates: number[]) => {
   const [randomFoodCoordinate, setRandomFoodCoordinate] = useState<number>(
-    generateRandomCoordinate()
+    generateRandomCoordinate(coordinates)
   );
 
   const generateRandomFoodCoordinate = () => {
-    setRandomFoodCoordinate(generateRandomCoordinate());
+    const randomeCoordinate = generateRandomCoordinate(coordinates);
+    setRandomFoodCoordinate(randomeCoordinate);
   };
 
   return { randomFoodCoordinate, generateRandomFoodCoordinate };

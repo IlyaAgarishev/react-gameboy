@@ -16,10 +16,11 @@ const defaultCoordinates = [0, 1, 2, 3];
 const useSnake = () => {
   const [coordinates, setCoordinates] = useState(defaultCoordinates);
   const [snakeIsStopped, setSnakeIsStopped] = useState(false);
+
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
   const { randomFoodCoordinate, generateRandomFoodCoordinate } =
-    useRandomFoodCoordinate();
+    useRandomFoodCoordinate(coordinates);
   const { snakeIsOutOfRange, setDefaultSnakeIsOutOfRange } =
     useSnakeIsOutOfRange(coordinates);
 
