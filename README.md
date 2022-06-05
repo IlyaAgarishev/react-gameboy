@@ -1,1 +1,3 @@
-Written with pure js and react without using canvas of side game libraries.
+Gameboy
+
+Written with react without using canvas or any side game library.
