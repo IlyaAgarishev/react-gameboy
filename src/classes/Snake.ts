@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { isControlKey } from "../hooks/useLastControlKeyPressed/utils-hook_useLastControlKeyPressed";
+import { isControlKey } from "../hooks/useLastControlKeyPressed/utils-use-last-control-key-pressed";
 import ControlKey from "../models/ControlKey";
 import Directions from "../models/Directions";
 
