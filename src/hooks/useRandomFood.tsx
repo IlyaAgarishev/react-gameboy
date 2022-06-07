@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { matrix, sizeOfMatrix } from "../constants";
+import { matrix } from "../constants";
 
 const generateRandomCoordinate = (coordinates: number[]): number => {
   const matrixWithoutSnakeCoordinates = matrix.filter(
