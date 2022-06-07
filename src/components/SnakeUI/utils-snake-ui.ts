@@ -1,13 +1,18 @@
 import { Colors } from "../../enums/Colors";
 import styles from "./SnakeUI.module.css";
 
+enum EnvironmentColors {
+  SquareBackground = "#3A3C39",
+  SquareBorder = "#333532",
+}
+
 // getBorder logic
 export const getBorder = (snakeIsStopped: boolean): string => {
   if (snakeIsStopped) {
     return `1px solid ${Colors.Red}`;
   }
 
-  return `1px solid ${Colors.SquareBorder}`;
+  return `1px solid ${EnvironmentColors.SquareBorder}`;
 };
 
 // getBackground logic
@@ -15,22 +20,24 @@ interface IGetBackground {
   randomFoodCoordinate: number;
   coordinates: number[];
   index: number;
+  randomFoodColor: Colors;
 }
 
 export const getBackground = ({
   randomFoodCoordinate,
   coordinates,
   index,
+  randomFoodColor,
 }: IGetBackground): string => {
   if (coordinates.some((cordinate) => cordinate === index)) {
     return Colors.Green;
   }
 
   if (randomFoodCoordinate === index) {
-    return Colors.Red;
+    return randomFoodColor;
   }
 
-  return Colors.SquareBackground;
+  return EnvironmentColors.SquareBackground;
 };
 
 // getClassName logic

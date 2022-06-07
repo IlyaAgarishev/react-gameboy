@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import Snake from "../classes/Snake";
-import useRandomFoodCoordinate from "./useRandomFood";
+import useRandomFoodCoordinate from "./useSnakeIsOutOfRange copy/useRandomFood";
 import useSnakeIsOutOfRange from "./useSnakeIsOutOfRange";
 
 const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
@@ -19,8 +19,11 @@ const useSnake = () => {
 
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
-  const { randomFoodCoordinate, generateRandomFoodCoordinate } =
-    useRandomFoodCoordinate(coordinates);
+  const {
+    randomFoodCoordinate,
+    generateRandomFoodCoordinate,
+    randomFoodColor,
+  } = useRandomFoodCoordinate(coordinates);
   const { snakeIsOutOfRange, setDefaultSnakeIsOutOfRange } =
     useSnakeIsOutOfRange(coordinates);
 
@@ -86,7 +89,7 @@ const useSnake = () => {
   }, [coordinates, snakeIsOutOfRange]);
 
   // Return the object from hook
-  return { coordinates, randomFoodCoordinate, snakeIsStopped };
+  return { coordinates, randomFoodCoordinate, snakeIsStopped, randomFoodColor };
 };
 
 export default useSnake;
