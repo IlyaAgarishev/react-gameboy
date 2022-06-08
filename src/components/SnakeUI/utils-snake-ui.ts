@@ -22,6 +22,7 @@ interface IGetBackground {
   index: number;
   randomFoodColor: Colors;
   snakeColor: Colors;
+  snakeIsStopped: boolean;
 }
 
 export const getBackground = ({
@@ -30,12 +31,17 @@ export const getBackground = ({
   index,
   randomFoodColor,
   snakeColor,
+  snakeIsStopped,
 }: IGetBackground): string => {
   if (coordinates.some((cordinate) => cordinate === index)) {
     return snakeColor;
   }
 
   if (randomFoodCoordinate === index) {
+    if (snakeIsStopped) {
+      return EnvironmentColors.SquareBackground;
+    }
+
     return randomFoodColor;
   }
 

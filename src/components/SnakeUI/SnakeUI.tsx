@@ -22,6 +22,7 @@ const SnakeUI = () => {
             randomFoodCoordinate,
             randomFoodColor,
             snakeColor,
+            snakeIsStopped,
           });
           const border = getBorder(snakeIsStopped);
           const className = getClassName({
