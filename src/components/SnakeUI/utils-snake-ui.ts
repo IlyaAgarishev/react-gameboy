@@ -21,6 +21,7 @@ interface IGetBackground {
   coordinates: number[];
   index: number;
   randomFoodColor: Colors;
+  snakeColor: Colors;
 }
 
 export const getBackground = ({
@@ -28,9 +29,10 @@ export const getBackground = ({
   coordinates,
   index,
   randomFoodColor,
+  snakeColor,
 }: IGetBackground): string => {
   if (coordinates.some((cordinate) => cordinate === index)) {
-    return Colors.Green;
+    return snakeColor;
   }
 
   if (randomFoodCoordinate === index) {

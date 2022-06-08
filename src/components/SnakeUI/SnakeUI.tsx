@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 import useSnake from "../../hooks/useSnake";
-import useRandomFood from "../../hooks/useSnakeIsOutOfRange copy";
 import { getBackground, getBorder, getClassName } from "./utils-snake-ui";
 
 const SnakeUI = () => {
-  const { coordinates, randomFoodCoordinate, snakeIsStopped, randomFoodColor } =
-    useSnake();
+  const {
+    coordinates,
+    randomFoodCoordinate,
+    snakeIsStopped,
+    randomFoodColor,
+    snakeColor,
+  } = useSnake();
 
   return (
     <>
@@ -17,6 +21,7 @@ const SnakeUI = () => {
             index,
             randomFoodCoordinate,
             randomFoodColor,
+            snakeColor,
           });
           const border = getBorder(snakeIsStopped);
           const className = getClassName({

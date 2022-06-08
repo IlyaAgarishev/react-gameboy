@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { matrix } from "../../constants";
 import { Colors } from "../../enums/Colors";
 import { getRandomCoordinate, getRandomColor } from "./utils-use-random-food";
 

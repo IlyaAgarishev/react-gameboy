@@ -3,6 +3,7 @@ import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import Snake from "../classes/Snake";
 import useRandomFoodCoordinate from "./useSnakeIsOutOfRange copy/useRandomFood";
 import useSnakeIsOutOfRange from "./useSnakeIsOutOfRange";
+import useSnakeColor from "./useSnakeColor";
 
 const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
   const copiedCoordinates = [...coordinates];
@@ -17,6 +18,7 @@ const useSnake = () => {
   const [coordinates, setCoordinates] = useState(defaultCoordinates);
   const [snakeIsStopped, setSnakeIsStopped] = useState(false);
 
+  const { snakeColor, setSnakeColor } = useSnakeColor();
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
   const {
@@ -58,11 +60,12 @@ const useSnake = () => {
     const lastSnakeCoordinate = coordinates[coordinates.length - 1];
 
     if (lastSnakeCoordinate === randomFoodCoordinate) {
+      setSnakeColor(randomFoodColor);
       generateRandomFoodCoordinate();
 
       snake.increaseTheSizeOfSnake(snake.getDirection(lastControlKeyPressed));
     }
-  }, [coordinates, randomFoodCoordinate]);
+  }, [coordinates, randomFoodCoordinate, snakeColor, randomFoodColor]);
 
   // Snake bites itself logic
   useEffect(() => {
@@ -89,7 +92,13 @@ const useSnake = () => {
   }, [coordinates, snakeIsOutOfRange]);
 
   // Return the object from hook
-  return { coordinates, randomFoodCoordinate, snakeIsStopped, randomFoodColor };
+  return {
+    coordinates,
+    randomFoodCoordinate,
+    snakeIsStopped,
+    randomFoodColor,
+    snakeColor,
+  };
 };
 
 export default useSnake;
