@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import ReduxLogger from "redux-logger";
 import { snakeReducer } from "./reducers/snakeSlice";
 
 const rootReducer = combineReducers({ snakeReducer });
@@ -6,6 +7,7 @@ const rootReducer = combineReducers({ snakeReducer });
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
+    middleware: [ReduxLogger],
   });
 };
 
