@@ -4,14 +4,16 @@ import ControlKey from "../models/ControlKey";
 import Directions from "../models/Directions";
 import { Coordinates } from "../models/SnakeState";
 
+type SetCoordinates = (coordinates: Coordinates) => void;
+
 interface ISnake {
   coordinates: number[];
-  setCoordinates: (coordinates: Coordinates) => void;
+  setCoordinates: SetCoordinates;
   lastControlKeyPressed: ControlKey;
 }
 
 class Snake {
-  private setCoordinates: (coordinates: Coordinates) => void;
+  private setCoordinates: SetCoordinates;
   private coordinates: number[];
   private lastControlKeyPressed: ControlKey;
 
