@@ -1,17 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface SnakeState {
-  coordinates: number[];
-}
+import SnakeState, { defaultCoordinates } from "../../models/SnakeState";
+import { Coordinates } from "../../models/SnakeState";
 
 const initialState: SnakeState = {
-  coordinates: [0, 1, 2, 3],
+  coordinates: defaultCoordinates,
 };
 
 const snakeSlice = createSlice({
   name: "snake",
   initialState,
-  reducers: {},
+  reducers: {
+    setCoordinatesAction(state, action: PayloadAction<Coordinates>) {
+      state.coordinates = action.payload;
+    },
+  },
 });
 
 export const snakeReducer = snakeSlice.reducer;

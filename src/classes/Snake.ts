@@ -2,15 +2,16 @@ import { Dispatch, SetStateAction } from "react";
 import { isControlKey } from "../hooks/useLastControlKeyPressed/utils-use-last-control-key-pressed";
 import ControlKey from "../models/ControlKey";
 import Directions from "../models/Directions";
+import { Coordinates } from "../models/SnakeState";
 
 interface ISnake {
   coordinates: number[];
-  setCoordinates: Dispatch<SetStateAction<number[]>>;
+  setCoordinates: (coordinates: Coordinates) => void;
   lastControlKeyPressed: ControlKey;
 }
 
 class Snake {
-  private setCoordinates: Dispatch<SetStateAction<number[]>>;
+  private setCoordinates: (coordinates: Coordinates) => void;
   private coordinates: number[];
   private lastControlKeyPressed: ControlKey;
 

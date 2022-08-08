@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import Snake from "../classes/Snake";
-import useRandomFoodCoordinate from "./useSnakeIsOutOfRange copy/useRandomFood";
+import useRandomFoodCoordinate from "./useRandomFood";
 import useSnakeIsOutOfRange from "./useSnakeIsOutOfRange";
 import useSnakeColor from "./useSnakeColor";
+import { useAppDispatch, useAppSelector } from "./reduxHooks";
+import snakeSlice from "../store/reducers/snakeSlice";
+import { Coordinates, defaultCoordinates } from "../models/SnakeState";
 
 const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
   const copiedCoordinates = [...coordinates];
@@ -12,10 +15,16 @@ const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
   return copiedCoordinates;
 };
 
-const defaultCoordinates = [0, 1, 2, 3];
-
 const useSnake = () => {
-  const [coordinates, setCoordinates] = useState(defaultCoordinates);
+  const { coordinates } = useAppSelector((state) => state.snakeReducer);
+
+  const dispatch = useAppDispatch();
+  const { setCoordinatesAction } = snakeSlice.actions;
+
+  const setCoordinates = (coordinates: Coordinates) => {
+    dispatch(setCoordinatesAction(coordinates));
+  };
+
   const [snakeIsStopped, setSnakeIsStopped] = useState(false);
 
   const { snakeColor, setSnakeColor } = useSnakeColor();
