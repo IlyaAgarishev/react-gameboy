@@ -13,35 +13,33 @@ const SnakeUI = () => {
 
   return (
     <>
-      {Array(144)
-        .fill("")
-        .map((el, index) => {
-          const background = getBackground({
-            coordinates,
-            index,
-            randomFoodCoordinate,
-            randomFoodColor,
-            snakeColor,
-            snakeIsStopped,
-          });
-          const border = getBorder(snakeIsStopped);
-          const className = getClassName({
-            coordinates,
-            snakeIsStopped,
-            index,
-          });
+      {[...Array(144)].map((el, index) => {
+        const background = getBackground({
+          coordinates,
+          index,
+          randomFoodCoordinate,
+          randomFoodColor,
+          snakeColor,
+          snakeIsStopped,
+        });
+        const border = getBorder(snakeIsStopped);
+        const className = getClassName({
+          coordinates,
+          snakeIsStopped,
+          index,
+        });
 
-          return (
-            <div
-              key={index}
-              className={className}
-              style={{
-                background,
-                border,
-              }}
-            />
-          );
-        })}
+        return (
+          <div
+            key={index}
+            className={className}
+            style={{
+              background,
+              border,
+            }}
+          />
+        );
+      })}
     </>
   );
 };
