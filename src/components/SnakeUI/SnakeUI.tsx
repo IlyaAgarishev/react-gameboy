@@ -6,7 +6,7 @@ const SnakeUI = () => {
   const {
     coordinates,
     randomFoodCoordinate,
-    snakeIsStopped,
+    snakeHasFailed,
     randomFoodColor,
     snakeColor,
   } = useSnake();
@@ -20,12 +20,12 @@ const SnakeUI = () => {
           randomFoodCoordinate,
           randomFoodColor,
           snakeColor,
-          snakeIsStopped,
+          snakeHasFailed,
         });
-        const border = getBorder(snakeIsStopped);
+        const border = getBorder(snakeHasFailed);
         const className = getClassName({
           coordinates,
-          snakeIsStopped,
+          snakeHasFailed,
           index,
         });
 

@@ -7,8 +7,8 @@ enum EnvironmentColors {
 }
 
 // getBorder logic
-export const getBorder = (snakeIsStopped: boolean): string => {
-  if (snakeIsStopped) {
+export const getBorder = (snakeHasFailed: boolean): string => {
+  if (snakeHasFailed) {
     return `1px solid ${Colors.Red}`;
   }
 
@@ -22,7 +22,7 @@ interface IGetBackground {
   index: number;
   randomFoodColor: Colors;
   snakeColor: Colors;
-  snakeIsStopped: boolean;
+  snakeHasFailed: boolean;
 }
 
 export const getBackground = ({
@@ -31,14 +31,14 @@ export const getBackground = ({
   index,
   randomFoodColor,
   snakeColor,
-  snakeIsStopped,
+  snakeHasFailed,
 }: IGetBackground): string => {
   if (coordinates.some((cordinate) => cordinate === index)) {
     return snakeColor;
   }
 
   if (randomFoodCoordinate === index) {
-    if (snakeIsStopped) {
+    if (snakeHasFailed) {
       return EnvironmentColors.SquareBackground;
     }
 
@@ -52,15 +52,15 @@ export const getBackground = ({
 interface IGetClassName {
   coordinates: number[];
   index: number;
-  snakeIsStopped: boolean;
+  snakeHasFailed: boolean;
 }
 
 export const getClassName = ({
   coordinates,
-  snakeIsStopped,
+  snakeHasFailed,
   index,
 }: IGetClassName) => {
-  if (coordinates.some((cordinate) => cordinate === index) && snakeIsStopped) {
+  if (coordinates.some((cordinate) => cordinate === index) && snakeHasFailed) {
     return styles.snakeBlinks;
   }
 };

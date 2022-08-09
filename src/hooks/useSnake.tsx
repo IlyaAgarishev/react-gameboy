@@ -26,7 +26,7 @@ const useSnake = () => {
     moveTheSnakeByOneSquare,
   } = useSnakeMotion();
 
-  const [snakeIsStopped, setSnakeIsStopped] = useState(false);
+  const [snakeHasFailed, setSnakeHasFailed] = useState(false);
 
   const { snakeColor, setSnakeColor } = useSnakeColor();
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
@@ -41,7 +41,7 @@ const useSnake = () => {
 
   // Keep snake moving
   useEffect(() => {
-    if (!snakeIsStopped) {
+    if (!snakeHasFailed) {
       const interval = setInterval(() => {
         moveTheSnakeByOneSquare();
       }, 150);
@@ -50,11 +50,11 @@ const useSnake = () => {
         clearInterval(interval);
       };
     }
-  }, [coordinates, lastControlKeyPressed, snakeIsStopped]);
+  }, [coordinates, lastControlKeyPressed, snakeHasFailed]);
 
   // Change snake direction onkeydown
   useEffect(() => {
-    if (!snakeIsStopped) {
+    if (!snakeHasFailed) {
       changeSnakeDirection(lastControlKeyPressed);
     }
   }, [lastControlKeyPressed]);
@@ -83,23 +83,29 @@ const useSnake = () => {
     );
 
     if (snakeBitesItself || snakeIsOutOfRange) {
-      setSnakeIsStopped(true);
+      setSnakeHasFailed(true);
 
       setTimeout(() => {
-        dispatch(setCoordinatesAction(defaultCoordinates));
         setDefaultLastControlKeyPressed();
         setDefaultSnakeIsOutOfRange();
-        setSnakeIsStopped(false);
+        setSnakeHasFailed(false);
         generateRandomFoodCoordinate();
       }, 3000);
     }
   }, [coordinates, snakeIsOutOfRange]);
 
+  // Back to default coordinates when snake is not stopped
+  useEffect(() => {
+    if (!snakeHasFailed) {
+      dispatch(setCoordinatesAction(defaultCoordinates));
+    }
+  }, [snakeHasFailed]);
+
   // Return the object from hook
   return {
     coordinates,
     randomFoodCoordinate,
-    snakeIsStopped,
+    snakeHasFailed,
     randomFoodColor,
     snakeColor,
   };
