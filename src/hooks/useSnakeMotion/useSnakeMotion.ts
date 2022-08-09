@@ -38,15 +38,18 @@ const useSnakeMotion = () => {
     dispatch(setCoordinatesAction(increasedCoordinates));
   }, [lastControlKeyPressed, coordinates]);
 
-  const changeSnakeDirection = useCallback((key: string) => {
-    if (isControlKey(key)) {
-      changeSnakeCoordinates(getDirection(key));
-    }
-  }, []);
+  const changeSnakeDirection = useCallback(
+    (key: string) => {
+      if (isControlKey(key)) {
+        changeSnakeCoordinates(getDirection(key));
+      }
+    },
+    [changeSnakeCoordinates]
+  );
 
   const moveTheSnakeByOneSquare = useCallback(() => {
     changeSnakeCoordinates(getDirection(lastControlKeyPressed));
-  }, [lastControlKeyPressed]);
+  }, [lastControlKeyPressed, changeSnakeCoordinates]);
 
   return {
     increaseTheSizeOfSnake,
