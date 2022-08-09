@@ -20,17 +20,19 @@ const useSnake = () => {
   const dispatch = useAppDispatch();
   const { setCoordinatesAction } = snakeSlice.actions;
 
+  const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
+    useLastControlKeyPressed();
+
   const {
     increaseTheSizeOfSnake,
     changeSnakeDirection,
     moveTheSnakeByOneSquare,
-  } = useSnakeMotion();
+  } = useSnakeMotion(lastControlKeyPressed);
 
   const [snakeHasFailed, setSnakeHasFailed] = useState(false);
 
   const { snakeColor, setSnakeColor } = useSnakeColor();
-  const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
-    useLastControlKeyPressed();
+
   const {
     randomFoodCoordinate,
     generateRandomFoodCoordinate,

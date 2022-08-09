@@ -8,13 +8,12 @@ import {
   getIncreasedCoordinates,
   sliceFirstThanAddNewAndGetNewCoordinates,
 } from "./utils-use-snake-motion";
+import ControlKey from "../../models/ControlKey";
 
-const useSnakeMotion = () => {
+const useSnakeMotion = (lastControlKeyPressed: ControlKey) => {
   const { coordinates } = useAppSelector((state) => state.snakeReducer);
   const dispatch = useAppDispatch();
   const { setCoordinatesAction } = snakeSlice.actions;
-
-  const { lastControlKeyPressed } = useLastControlKeyPressed();
 
   const changeSnakeCoordinates = useCallback(
     (coordinateNumber: number) => {
