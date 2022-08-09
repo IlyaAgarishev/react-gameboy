@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { matrix } from "../../constants";
 import useSnake from "../../hooks/useSnake";
 import { getBackground, getBorder, getClassName } from "./utils-snake-ui";
 
@@ -13,7 +13,7 @@ const SnakeUI = () => {
 
   return (
     <>
-      {[...Array(144)].map((el, index) => {
+      {matrix.map((el, index) => {
         const background = getBackground({
           coordinates,
           index,
