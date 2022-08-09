@@ -12,18 +12,17 @@ interface ReturnUseLastControlKeyPressed {
 const useLastControlKeyPressed = (): ReturnUseLastControlKeyPressed => {
   const defaulKey = KeyboardButtons.ArrowRight;
 
-  const keyPressed = useOnKeyDown();
+  const keyDownData = useOnKeyDown();
   const [lastControlKeyPressed, setLastControlKeyPressed] =
     useState<ControlKey>(defaulKey);
 
   useEffect(() => {
-    if (
-      isControlKey(keyPressed) &&
-      isRightKey(keyPressed, lastControlKeyPressed)
-    ) {
-      setLastControlKeyPressed(keyPressed);
+    const { key } = keyDownData;
+
+    if (isControlKey(key) && isRightKey(key, lastControlKeyPressed)) {
+      setLastControlKeyPressed(key);
     }
-  }, [keyPressed]);
+  }, [keyDownData]);
 
   const setDefaultLastControlKeyPressed = () => {
     setLastControlKeyPressed(defaulKey);

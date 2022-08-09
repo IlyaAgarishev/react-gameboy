@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useOnKeyDown from "../../hooks/useOnKeyDown";
 import ControlKey from "../../models/ControlKey";
 import styles from "./Button.module.css";
 
@@ -9,6 +10,8 @@ interface IDirectionalButton {
 const Button: React.FC<IDirectionalButton> = ({ keyboardButton }) => {
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
 
+  const keyDownData = useOnKeyDown();
+
   const click = () => {
     setButtonIsClicked(true);
 
@@ -17,21 +20,11 @@ const Button: React.FC<IDirectionalButton> = ({ keyboardButton }) => {
     }, 100);
   };
 
-  // TODO: fix useOnKeyDown, then use useOnKeyDown
-  const onKeyDown = ({ key }: any) => {
-    if (key === keyboardButton) {
+  useEffect(() => {
+    if (keyDownData.key === keyboardButton) {
       click();
     }
-  };
-
-  // TODO: fix useOnKeyDown, then use useOnKeyDown
-  useEffect(() => {
-    document.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, []);
+  }, [keyDownData]);
 
   return (
     <button

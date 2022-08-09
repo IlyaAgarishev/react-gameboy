@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 
+interface IKey {
+  key: string;
+}
+
 const useOnKeyDown = () => {
-  const [state, setState] = useState<any>("");
+  const [state, setState] = useState<IKey>({ key: "" });
 
   const onKeyDown = ({ key }: any) => {
-    setState(key);
+    setState({ key });
   };
 
   useEffect(() => {
