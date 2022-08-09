@@ -16,14 +16,17 @@ const useSnakeMotion = () => {
 
   const { lastControlKeyPressed } = useLastControlKeyPressed();
 
-  const changeSnakeCoordinates = (coordinateNumber: number) => {
-    const newCoordinates = sliceFirstThanAddNewAndGetNewCoordinates(
-      coordinates,
-      coordinateNumber
-    );
+  const changeSnakeCoordinates = useCallback(
+    (coordinateNumber: number) => {
+      const newCoordinates = sliceFirstThanAddNewAndGetNewCoordinates(
+        coordinates,
+        coordinateNumber
+      );
 
-    dispatch(setCoordinatesAction(newCoordinates));
-  };
+      dispatch(setCoordinatesAction(newCoordinates));
+    },
+    [coordinates]
+  );
 
   const increaseTheSizeOfSnake = useCallback(() => {
     const coordinateNumber = getDirection(lastControlKeyPressed);
@@ -35,15 +38,15 @@ const useSnakeMotion = () => {
     dispatch(setCoordinatesAction(increasedCoordinates));
   }, [lastControlKeyPressed, coordinates]);
 
-  const changeSnakeDirection = (key: string) => {
+  const changeSnakeDirection = useCallback((key: string) => {
     if (isControlKey(key)) {
       changeSnakeCoordinates(getDirection(key));
     }
-  };
+  }, []);
 
-  const moveTheSnakeByOneSquare = () => {
+  const moveTheSnakeByOneSquare = useCallback(() => {
     changeSnakeCoordinates(getDirection(lastControlKeyPressed));
-  };
+  }, [lastControlKeyPressed]);
 
   return {
     increaseTheSizeOfSnake,
