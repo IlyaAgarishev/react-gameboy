@@ -1,4 +1,4 @@
-import { DirectionsEnum } from "../enums/DirectionsEnum";
+import { KeyboardButtons } from "../enums/KeyboardButtons";
 import ControlKey from "../models/ControlKey";
 
 class KeyboardEmulator {
@@ -7,19 +7,19 @@ class KeyboardEmulator {
   };
 
   moveLeft = () => {
-    this.pressKey(DirectionsEnum.ArrowLeft);
+    this.pressKey(KeyboardButtons.ArrowLeft);
   };
 
   moveRight = () => {
-    this.pressKey(DirectionsEnum.ArrowRight);
+    this.pressKey(KeyboardButtons.ArrowRight);
   };
 
   moveUp = () => {
-    this.pressKey(DirectionsEnum.ArrowUp);
+    this.pressKey(KeyboardButtons.ArrowUp);
   };
 
   moveDown = () => {
-    this.pressKey(DirectionsEnum.ArrowDown);
+    this.pressKey(KeyboardButtons.ArrowDown);
   };
 }
 

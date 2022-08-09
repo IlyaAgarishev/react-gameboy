@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import ControlKey from "../../models/ControlKey";
-import styles from "./DirectionalButton.module.css";
+import styles from "./Button.module.css";
 
 interface IDirectionalButton {
-  direction: ControlKey;
+  keyboardButton: ControlKey;
 }
 
-const DirectionalButton: React.FC<IDirectionalButton> = ({ direction }) => {
+const Button: React.FC<IDirectionalButton> = ({ keyboardButton }) => {
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
 
   const click = () => {
@@ -19,7 +19,7 @@ const DirectionalButton: React.FC<IDirectionalButton> = ({ direction }) => {
 
   // TODO: fix useOnKeyDown, then use useOnKeyDown
   const onKeyDown = ({ key }: any) => {
-    if (key === direction) {
+    if (key === keyboardButton) {
       click();
     }
   };
@@ -44,4 +44,4 @@ const DirectionalButton: React.FC<IDirectionalButton> = ({ direction }) => {
   );
 };
 
-export default DirectionalButton;
+export default Button;

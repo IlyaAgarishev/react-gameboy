@@ -1,4 +1,4 @@
-export enum DirectionsEnum {
+export enum KeyboardButtons {
   ArrowUp = "ArrowUp",
   ArrowDown = "ArrowDown",
   ArrowRight = "ArrowRight",

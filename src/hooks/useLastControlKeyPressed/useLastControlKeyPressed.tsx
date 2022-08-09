@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DirectionsEnum } from "../../enums/DirectionsEnum";
+import { KeyboardButtons } from "../../enums/KeyboardButtons";
 import ControlKey from "../../models/ControlKey";
 import useOnKeyDown from "../useOnKeyDown";
 import { isControlKey, isRightKey } from "./utils-use-last-control-key-pressed";
@@ -10,7 +10,7 @@ interface ReturnUseLastControlKeyPressed {
 }
 
 const useLastControlKeyPressed = (): ReturnUseLastControlKeyPressed => {
-  const defaulKey = DirectionsEnum.ArrowRight;
+  const defaulKey = KeyboardButtons.ArrowRight;
 
   const keyPressed = useOnKeyDown();
   const [lastControlKeyPressed, setLastControlKeyPressed] =

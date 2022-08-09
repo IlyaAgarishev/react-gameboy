@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { DirectionsEnum } from "../../enums/DirectionsEnum";
+import { KeyboardButtons } from "../../enums/KeyboardButtons";
 import ControlKey from "../../models/ControlKey";
 
 const controlKeys = [
@@ -25,8 +25,11 @@ const isRightKey = (key: ControlKey, lastKeyPressed: ControlKey) => {
     return false;
   };
 
-  const horizontalKeys = [DirectionsEnum.ArrowLeft, DirectionsEnum.ArrowRight];
-  const verticalKeys = [DirectionsEnum.ArrowDown, DirectionsEnum.ArrowUp];
+  const horizontalKeys = [
+    KeyboardButtons.ArrowLeft,
+    KeyboardButtons.ArrowRight,
+  ];
+  const verticalKeys = [KeyboardButtons.ArrowDown, KeyboardButtons.ArrowUp];
 
   const horizontalKeysHaveConflict = getKeysConflict(horizontalKeys);
   const verticalKeysHaveConflict = getKeysConflict(verticalKeys);
