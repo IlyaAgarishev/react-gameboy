@@ -21,6 +21,11 @@ class KeyboardEmulator {
   moveDown = () => {
     this.pressKey(KeyboardButtons.ArrowDown);
   };
+
+  pressEnter = () => {
+    // TODO: внести новый тип "Enter" и убрать каст !
+    this.pressKey(KeyboardButtons.Enter as ControlKey);
+  };
 }
 
 export default new KeyboardEmulator();

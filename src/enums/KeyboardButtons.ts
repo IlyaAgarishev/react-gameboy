@@ -3,4 +3,5 @@ export enum KeyboardButtons {
   ArrowDown = "ArrowDown",
   ArrowRight = "ArrowRight",
   ArrowLeft = "ArrowLeft",
+  Enter = "Enter",
 }

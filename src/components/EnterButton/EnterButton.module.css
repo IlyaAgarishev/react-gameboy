@@ -1,0 +1,9 @@
+.enterButton {
+  margin-top: 41px;
+  margin-left: 306px;
+}
+
+.enterButton span {
+  padding: 50px;
+  transform: translateY(-4px) translateX(-4px);
+}
