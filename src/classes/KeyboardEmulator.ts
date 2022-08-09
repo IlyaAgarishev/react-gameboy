@@ -23,8 +23,8 @@ class KeyboardEmulator {
   };
 
   pressEnter = () => {
-    // TODO: внести новый тип "Enter" и убрать каст !
-    this.pressKey(KeyboardButtons.Enter as ControlKey);
+    // TODO: внести новый тип "Space" и убрать каст !
+    this.pressKey(KeyboardButtons.Space as ControlKey);
   };
 }
 

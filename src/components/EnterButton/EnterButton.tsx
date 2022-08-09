@@ -10,15 +10,15 @@ const EnterButton = () => {
   const keyDownData = useOnKeyDown();
 
   useEffect(() => {
-    if (keyDownData.key === "Enter") {
+    if (keyDownData.key === "Space") {
       // Do something
     }
   }, [keyDownData]);
 
   return (
     <div className={styles.enterButton} onClick={keyboardEmulator.pressEnter}>
-      {/* TODO: внести новый тип "Enter" и убрать каст ! */}
-      <Button keyboardButton={KeyboardButtons.Enter as ControlKey} />
+      {/* TODO: внести новый тип "Space" и убрать каст ! */}
+      <Button keyboardButton={KeyboardButtons.Space as ControlKey} />
     </div>
   );
 };

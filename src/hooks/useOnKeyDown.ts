@@ -7,8 +7,13 @@ interface IKey {
 const useOnKeyDown = () => {
   const [state, setState] = useState<IKey>({ key: "" });
 
-  const onKeyDown = ({ key }: any) => {
-    setState({ key });
+  const onKeyDown = ({ key }: KeyboardEvent) => {
+    if (key === " ") {
+      // Обработка на Space
+      setState({ key: "Space" });
+    } else {
+      setState({ key });
+    }
   };
 
   useEffect(() => {
