@@ -1,4 +1,4 @@
-.dicrectionalButton {
+.controlButton {
   background: #afafaf;
   border-radius: 12px;
   border: none;
@@ -7,7 +7,7 @@
   outline: none;
 }
 
-.dicrectionalButton span {
+.controlButton span {
   display: block;
   padding: 25px;
   border-radius: 12px;
@@ -21,6 +21,6 @@
   transform: none;
 }
 
-.dicrectionalButton:active span {
+.controlButton:active span {
   transform: none;
 }

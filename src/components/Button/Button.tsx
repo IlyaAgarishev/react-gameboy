@@ -35,7 +35,7 @@ const Button: React.FC<IDirectionalButton> = ({ keyboardButton }) => {
 
   return (
     <button
-      className={`${styles.dicrectionalButton} ${
+      className={`${styles.controlButton} ${
         buttonIsClicked && styles.isActive
       }`}
     >
