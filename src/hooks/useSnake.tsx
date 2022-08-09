@@ -37,7 +37,7 @@ const useSnake = () => {
     randomFoodColor,
   } = useRandomFoodCoordinate(coordinates);
   const { snakeIsOutOfRange, setDefaultSnakeIsOutOfRange } =
-    useSnakeIsOutOfRange(coordinates);
+    useSnakeIsOutOfRange();
 
   // Keep snake moving
   useEffect(() => {

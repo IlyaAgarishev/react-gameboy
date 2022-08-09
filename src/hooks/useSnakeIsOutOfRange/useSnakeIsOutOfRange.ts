@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAppSelector } from "../reduxHooks";
 import {
   checkIfSnakeIsOutOfHorizontalRange,
   checkIfSnakeIsOutOfVerticalRange,
@@ -9,7 +10,8 @@ type HookReturns = {
   setDefaultSnakeIsOutOfRange: () => void;
 };
 
-const useSnakeIsOutOfRange = (coordinates: number[]): HookReturns => {
+const useSnakeIsOutOfRange = (): HookReturns => {
+  const { coordinates } = useAppSelector((state) => state.snakeReducer);
   const [snakeIsOutOfRange, setSnakeIsOutOfRange] = useState(false);
 
   const setDefaultSnakeIsOutOfRange = () => {
