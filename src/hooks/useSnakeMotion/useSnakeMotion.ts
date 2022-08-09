@@ -1,21 +1,12 @@
-import useLastControlKeyPressed from "./useLastControlKeyPressed";
-import { useAppDispatch, useAppSelector } from "./reduxHooks";
-import snakeSlice from "../store/reducers/snakeSlice";
-import Directions from "../models/Directions";
-import ControlKey from "../models/ControlKey";
-import { isControlKey } from "./useLastControlKeyPressed/utils-use-last-control-key-pressed";
-import { useEffect } from "react";
-
-const directions: Directions = {
-  ArrowUp: -12,
-  ArrowDown: 12,
-  ArrowRight: 1,
-  ArrowLeft: -1,
-};
-
-const getDirection = (key: ControlKey) => {
-  return directions[key];
-};
+import useLastControlKeyPressed from "../useLastControlKeyPressed";
+import { useAppDispatch, useAppSelector } from "../reduxHooks";
+import snakeSlice from "../../store/reducers/snakeSlice";
+import { isControlKey } from "../useLastControlKeyPressed/utils-use-last-control-key-pressed";
+import { useCallback } from "react";
+import {
+  getDirection,
+  getIncreasedCoordinates,
+} from "./utils-use-snake-motion";
 
 const useSnakeMotion = () => {
   const { coordinates } = useAppSelector((state) => state.snakeReducer);
@@ -34,14 +25,15 @@ const useSnakeMotion = () => {
     dispatch(setCoordinatesAction(newCoordinates));
   };
 
-  const increaseTheSizeOfSnake = (coordinateNumber: number) => {
-    const newCoordinates = [...coordinates];
-    const coordinateToPush =
-      newCoordinates[newCoordinates.length - 1] + coordinateNumber;
-    newCoordinates.push(coordinateToPush);
+  const increaseTheSizeOfSnake = useCallback(() => {
+    const coordinateNumber = getDirection(lastControlKeyPressed);
+    const increasedCoordinates = getIncreasedCoordinates(
+      coordinates,
+      coordinateNumber
+    );
 
-    dispatch(setCoordinatesAction(newCoordinates));
-  };
+    dispatch(setCoordinatesAction(increasedCoordinates));
+  }, [lastControlKeyPressed, coordinates]);
 
   const changeSnakeDirection = (key: string) => {
     if (isControlKey(key)) {
@@ -54,7 +46,6 @@ const useSnakeMotion = () => {
   };
 
   return {
-    getDirection,
     increaseTheSizeOfSnake,
     changeSnakeDirection,
     moveTheSnakeByOneSquare,

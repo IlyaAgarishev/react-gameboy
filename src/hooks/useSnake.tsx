@@ -21,7 +21,6 @@ const useSnake = () => {
   const { setCoordinatesAction } = snakeSlice.actions;
 
   const {
-    getDirection,
     increaseTheSizeOfSnake,
     changeSnakeDirection,
     moveTheSnakeByOneSquare,
@@ -68,7 +67,7 @@ const useSnake = () => {
       setSnakeColor(randomFoodColor);
       generateRandomFoodCoordinate();
 
-      increaseTheSizeOfSnake(getDirection(lastControlKeyPressed));
+      increaseTheSizeOfSnake();
     }
   }, [coordinates, randomFoodCoordinate, snakeColor, randomFoodColor]);
 
