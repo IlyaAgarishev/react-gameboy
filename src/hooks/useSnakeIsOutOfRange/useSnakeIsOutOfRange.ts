@@ -7,16 +7,12 @@ import {
 
 type HookReturns = {
   snakeIsOutOfRange: boolean;
-  setDefaultSnakeIsOutOfRange: () => void;
+  setSnakeIsOutOfRange: (snakeIsOutOfRange: boolean) => void;
 };
 
 const useSnakeIsOutOfRange = (): HookReturns => {
   const { coordinates } = useAppSelector((state) => state.snakeReducer);
   const [snakeIsOutOfRange, setSnakeIsOutOfRange] = useState(false);
-
-  const setDefaultSnakeIsOutOfRange = () => {
-    setSnakeIsOutOfRange(false);
-  };
 
   useEffect(() => {
     // Getting last coordinate of the snake
@@ -39,7 +35,7 @@ const useSnakeIsOutOfRange = (): HookReturns => {
     }
   }, [coordinates]);
 
-  return { snakeIsOutOfRange, setDefaultSnakeIsOutOfRange };
+  return { snakeIsOutOfRange, setSnakeIsOutOfRange };
 };
 
 export default useSnakeIsOutOfRange;

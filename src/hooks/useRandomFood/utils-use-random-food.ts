@@ -1,5 +1,6 @@
 import { matrix } from "../../constants";
 import { Colors } from "../../enums/Colors";
+import { Coordinates } from "../../models/SnakeState";
 
 export const getRandomColor = (): Colors => {
   const randomColorIndex = Math.floor(
@@ -9,7 +10,7 @@ export const getRandomColor = (): Colors => {
   return Object.values(Colors)[randomColorIndex];
 };
 
-export const getRandomCoordinate = (coordinates: number[]): number => {
+export const getRandomCoordinate = (coordinates: Coordinates): number => {
   const matrixWithoutSnakeCoordinates = matrix.filter(
     (el) => !coordinates.includes(el)
   );

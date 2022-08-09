@@ -5,10 +5,10 @@ import useSnakeIsOutOfRange from "./useSnakeIsOutOfRange";
 import useSnakeColor from "./useSnakeColor";
 import { useAppDispatch, useAppSelector } from "./reduxHooks";
 import snakeSlice from "../store/reducers/snakeSlice";
-import { defaultCoordinates } from "../models/SnakeState";
+import { Coordinates, defaultCoordinates } from "../models/SnakeState";
 import useSnakeMotion from "./useSnakeMotion";
 
-const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
+const getCoordinatesWithoutTheLastOne = (coordinates: Coordinates) => {
   const copiedCoordinates = [...coordinates];
   copiedCoordinates.pop();
 
@@ -37,9 +37,8 @@ const useSnake = () => {
     randomFoodCoordinate,
     generateRandomFoodCoordinate,
     randomFoodColor,
-  } = useRandomFoodCoordinate(coordinates);
-  const { snakeIsOutOfRange, setDefaultSnakeIsOutOfRange } =
-    useSnakeIsOutOfRange();
+  } = useRandomFoodCoordinate();
+  const { snakeIsOutOfRange, setSnakeIsOutOfRange } = useSnakeIsOutOfRange();
 
   // Keep snake moving
   useEffect(() => {
@@ -89,7 +88,7 @@ const useSnake = () => {
 
       setTimeout(() => {
         setDefaultLastControlKeyPressed();
-        setDefaultSnakeIsOutOfRange();
+        setSnakeIsOutOfRange(false);
         setSnakeHasFailed(false);
         generateRandomFoodCoordinate();
       }, 3000);

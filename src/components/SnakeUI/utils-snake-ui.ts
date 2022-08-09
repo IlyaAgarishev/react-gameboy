@@ -1,4 +1,5 @@
 import { Colors } from "../../enums/Colors";
+import { Coordinates } from "../../models/SnakeState";
 import styles from "./SnakeUI.module.css";
 
 enum EnvironmentColors {
@@ -18,7 +19,7 @@ export const getBorder = (snakeHasFailed: boolean): string => {
 // getBackground logic
 interface IGetBackground {
   randomFoodCoordinate: number;
-  coordinates: number[];
+  coordinates: Coordinates;
   index: number;
   randomFoodColor: Colors;
   snakeColor: Colors;
@@ -50,7 +51,7 @@ export const getBackground = ({
 
 // getClassName logic
 interface IGetClassName {
-  coordinates: number[];
+  coordinates: Coordinates;
   index: number;
   snakeHasFailed: boolean;
 }
