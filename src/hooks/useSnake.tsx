@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
-import Snake from "../classes/Snake";
 import useRandomFoodCoordinate from "./useRandomFood";
 import useSnakeIsOutOfRange from "./useSnakeIsOutOfRange";
 import useSnakeColor from "./useSnakeColor";
 import { useAppDispatch, useAppSelector } from "./reduxHooks";
 import snakeSlice from "../store/reducers/snakeSlice";
-import { Coordinates, defaultCoordinates } from "../models/SnakeState";
+import { defaultCoordinates } from "../models/SnakeState";
+import useSnakeMotion from "./useSnakeMotion";
 
 const getCoordinatesWithoutTheLastOne = (coordinates: number[]) => {
   const copiedCoordinates = [...coordinates];
@@ -20,9 +20,12 @@ const useSnake = () => {
   const dispatch = useAppDispatch();
   const { setCoordinatesAction } = snakeSlice.actions;
 
-  const setCoordinates = (coordinates: Coordinates) => {
-    dispatch(setCoordinatesAction(coordinates));
-  };
+  const {
+    getDirection,
+    increaseTheSizeOfSnake,
+    changeSnakeDirection,
+    moveTheSnakeByOneSquare,
+  } = useSnakeMotion();
 
   const [snakeIsStopped, setSnakeIsStopped] = useState(false);
 
@@ -37,17 +40,11 @@ const useSnake = () => {
   const { snakeIsOutOfRange, setDefaultSnakeIsOutOfRange } =
     useSnakeIsOutOfRange(coordinates);
 
-  const snake = new Snake({
-    coordinates,
-    setCoordinates,
-    lastControlKeyPressed,
-  });
-
   // Keep snake moving
   useEffect(() => {
     if (!snakeIsStopped) {
       const interval = setInterval(() => {
-        snake.moveTheSnakeByOneSquare();
+        moveTheSnakeByOneSquare();
       }, 150);
 
       return () => {
@@ -59,7 +56,7 @@ const useSnake = () => {
   // Change snake direction onkeydown
   useEffect(() => {
     if (!snakeIsStopped) {
-      snake.changeSnakeDirection(lastControlKeyPressed);
+      changeSnakeDirection(lastControlKeyPressed);
     }
   }, [lastControlKeyPressed]);
 
@@ -71,7 +68,7 @@ const useSnake = () => {
       setSnakeColor(randomFoodColor);
       generateRandomFoodCoordinate();
 
-      snake.increaseTheSizeOfSnake(snake.getDirection(lastControlKeyPressed));
+      increaseTheSizeOfSnake(getDirection(lastControlKeyPressed));
     }
   }, [coordinates, randomFoodCoordinate, snakeColor, randomFoodColor]);
 
@@ -90,7 +87,7 @@ const useSnake = () => {
       setSnakeIsStopped(true);
 
       setTimeout(() => {
-        setCoordinates(defaultCoordinates);
+        dispatch(setCoordinatesAction(defaultCoordinates));
         setDefaultLastControlKeyPressed();
         setDefaultSnakeIsOutOfRange();
         setSnakeIsStopped(false);
