@@ -23,4 +23,4 @@ class KeyboardEmulator {
   };
 }
 
-export default KeyboardEmulator;
+export default new KeyboardEmulator();
