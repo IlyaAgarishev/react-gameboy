@@ -6,6 +6,7 @@ import { useCallback } from "react";
 import {
   getDirection,
   getIncreasedCoordinates,
+  sliceFirstThanAddNewAndGetNewCoordinates,
 } from "./utils-use-snake-motion";
 
 const useSnakeMotion = () => {
@@ -16,11 +17,10 @@ const useSnakeMotion = () => {
   const { lastControlKeyPressed } = useLastControlKeyPressed();
 
   const changeSnakeCoordinates = (coordinateNumber: number) => {
-    const newCoordinates = [...coordinates];
-    newCoordinates.shift();
-    const coordinateToPush =
-      newCoordinates[newCoordinates.length - 1] + coordinateNumber;
-    newCoordinates.push(coordinateToPush);
+    const newCoordinates = sliceFirstThanAddNewAndGetNewCoordinates(
+      coordinates,
+      coordinateNumber
+    );
 
     dispatch(setCoordinatesAction(newCoordinates));
   };

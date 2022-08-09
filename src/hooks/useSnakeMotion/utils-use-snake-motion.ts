@@ -22,3 +22,16 @@ export const getIncreasedCoordinates = (
 
   return [...coordinates, brandNewCoordinate];
 };
+
+export const sliceFirstThanAddNewAndGetNewCoordinates = (
+  coordinates: Coordinates,
+  coordinateNumber: number
+) => {
+  // Получаем новый массив без первой координаты(удаляем первую координату)
+  const slicedCoordinates = [...coordinates.slice(1)];
+  const lastCoordinate = slicedCoordinates.length - 1;
+  const brandNewCoordinate =
+    slicedCoordinates[lastCoordinate] + coordinateNumber;
+
+  return [...slicedCoordinates, brandNewCoordinate];
+};
