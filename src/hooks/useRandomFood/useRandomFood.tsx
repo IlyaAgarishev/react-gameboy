@@ -4,7 +4,7 @@ import { useAppSelector } from "../reduxHooks";
 import { getRandomCoordinate, getRandomColor } from "./utils-use-random-food";
 
 const useRandomFoodCoordinate = () => {
-  const { coordinates } = useAppSelector((state) => state.snakeReducer);
+  const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
   const [randomFoodColor, setRandomFoodColor] = useState<Colors>(
     getRandomColor()
   );

@@ -16,7 +16,7 @@ const getCoordinatesWithoutTheLastOne = (coordinates: Coordinates) => {
 };
 
 const useSnake = () => {
-  const { coordinates } = useAppSelector((state) => state.snakeReducer);
+  const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
   const dispatch = useAppDispatch();
   const { setCoordinatesAction, incrementScoreAction, clearScoreAction } =
     snakeSlice.actions;

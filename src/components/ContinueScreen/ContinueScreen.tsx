@@ -3,7 +3,7 @@ import { useAppSelector } from "../../hooks/reduxHooks";
 import styles from "./ContinueScreen.module.css";
 
 const ContinueScreen = () => {
-  const { score } = useAppSelector((state) => state.snakeReducer);
+  const score = useAppSelector((state) => state.snakeReducer.score);
 
   return (
     <div className={styles.continueScreen}>

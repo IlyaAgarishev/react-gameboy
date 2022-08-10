@@ -11,7 +11,7 @@ type HookReturns = {
 };
 
 const useSnakeIsOutOfRange = (): HookReturns => {
-  const { coordinates } = useAppSelector((state) => state.snakeReducer);
+  const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
   const [snakeIsOutOfRange, setSnakeIsOutOfRange] = useState(false);
 
   useEffect(() => {

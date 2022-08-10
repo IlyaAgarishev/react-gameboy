@@ -11,7 +11,7 @@ import {
 import ControlKey from "../../models/ControlKey";
 
 const useSnakeMotion = (lastControlKeyPressed: ControlKey) => {
-  const { coordinates } = useAppSelector((state) => state.snakeReducer);
+  const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
   const dispatch = useAppDispatch();
   const { setCoordinatesAction } = snakeSlice.actions;
 
