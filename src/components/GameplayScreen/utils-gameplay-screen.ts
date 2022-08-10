@@ -1,6 +1,6 @@
 import { Colors } from "../../enums/Colors";
 import { Coordinates } from "../../models/SnakeState";
-import styles from "./SnakeUI.module.css";
+import styles from "./GameplayScreen.module.css";
 
 enum EnvironmentColors {
   SquareBackground = "#3A3C39",

@@ -1,0 +1,19 @@
+.spaceButtonOnScreen {
+  background: black;
+  padding: 5px 10px;
+  color: #afafaf;
+  border-radius: 5px;
+}
+
+.continueScreen {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  z-index: 1;
+  position: absolute;
+}
+
+.continueScreen div {
+  margin-bottom: 12px;
+}

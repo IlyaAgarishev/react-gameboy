@@ -1,4 +1,5 @@
-import SnakeUI from "../SnakeUI";
+import ContinueScreen from "../ContinueScreen";
+import GameplayScreen from "../GameplayScreen";
 import styles from "./Screen.module.css";
 
 const Screen = () => {
@@ -6,7 +7,8 @@ const Screen = () => {
     <div className={styles.screenWrapper}>
       <div className={styles.battery} />
       <div className={styles.screen}>
-        <SnakeUI />
+        <ContinueScreen />
+        <GameplayScreen blur={true} />
       </div>
     </div>
   );

@@ -1,8 +1,17 @@
 import { matrix } from "../../constants";
 import useSnake from "../../hooks/useSnake";
-import { getBackground, getBorder, getClassName } from "./utils-snake-ui";
+import {
+  getBackground,
+  getBorder,
+  getClassName,
+} from "./utils-gameplay-screen";
+import styles from "./GameplayScreen.module.css";
 
-const SnakeUI = () => {
+interface IGameplayScreen {
+  blur: boolean;
+}
+
+const GameplayScreen: React.FC<IGameplayScreen> = ({ blur }) => {
   const {
     coordinates,
     randomFoodCoordinate,
@@ -12,7 +21,10 @@ const SnakeUI = () => {
   } = useSnake();
 
   return (
-    <>
+    <div
+      className={styles.gameplayScreen}
+      style={{ filter: blur ? "blur(3px)" : "none" }}
+    >
       {matrix.map((el, index) => {
         const background = getBackground({
           coordinates,
@@ -40,8 +52,8 @@ const SnakeUI = () => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 
-export default SnakeUI;
+export default GameplayScreen;
