@@ -4,6 +4,7 @@ import { Coordinates } from "../../models/SnakeState";
 
 const initialState: SnakeState = {
   coordinates: defaultCoordinates,
+  score: 0,
 };
 
 const snakeSlice = createSlice({
@@ -12,6 +13,12 @@ const snakeSlice = createSlice({
   reducers: {
     setCoordinatesAction(state, action: PayloadAction<Coordinates>) {
       state.coordinates = action.payload;
+    },
+    incrementScoreAction(state) {
+      state.score++;
+    },
+    clearScoreAction(state) {
+      state.score = 0;
     },
   },
 });

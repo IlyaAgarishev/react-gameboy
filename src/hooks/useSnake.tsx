@@ -18,7 +18,8 @@ const getCoordinatesWithoutTheLastOne = (coordinates: Coordinates) => {
 const useSnake = () => {
   const { coordinates } = useAppSelector((state) => state.snakeReducer);
   const dispatch = useAppDispatch();
-  const { setCoordinatesAction } = snakeSlice.actions;
+  const { setCoordinatesAction, incrementScoreAction, clearScoreAction } =
+    snakeSlice.actions;
 
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
@@ -65,9 +66,9 @@ const useSnake = () => {
     const lastSnakeCoordinate = coordinates[coordinates.length - 1];
 
     if (lastSnakeCoordinate === randomFoodCoordinate) {
+      dispatch(incrementScoreAction());
       setSnakeColor(randomFoodColor);
       generateRandomFoodCoordinate();
-
       increaseTheSizeOfSnake();
     }
   }, [coordinates, randomFoodCoordinate, snakeColor, randomFoodColor]);
@@ -99,6 +100,7 @@ const useSnake = () => {
   useEffect(() => {
     if (!snakeHasFailed) {
       dispatch(setCoordinatesAction(defaultCoordinates));
+      dispatch(clearScoreAction());
     }
   }, [snakeHasFailed]);
 
