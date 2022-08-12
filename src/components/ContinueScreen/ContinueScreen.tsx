@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppSelector } from "../../hooks/reduxHooks";
 import styles from "./ContinueScreen.module.css";
 

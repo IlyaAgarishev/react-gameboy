@@ -17,9 +17,17 @@ const getCoordinatesWithoutTheLastOne = (coordinates: Coordinates) => {
 
 const useSnake = () => {
   const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
+  const snakeHasFailed = useAppSelector(
+    (state) => state.snakeReducer.snakeHasFailed
+  );
+
   const dispatch = useAppDispatch();
-  const { setCoordinatesAction, incrementScoreAction, clearScoreAction } =
-    snakeSlice.actions;
+  const {
+    setCoordinatesAction,
+    incrementScoreAction,
+    clearScoreAction,
+    setSnakeHasFailedAction,
+  } = snakeSlice.actions;
 
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
@@ -29,8 +37,6 @@ const useSnake = () => {
     changeSnakeDirection,
     moveTheSnakeByOneSquare,
   } = useSnakeMotion(lastControlKeyPressed);
-
-  const [snakeHasFailed, setSnakeHasFailed] = useState(false);
 
   const { snakeColor, setSnakeColor } = useSnakeColor();
 
@@ -46,7 +52,7 @@ const useSnake = () => {
     if (!snakeHasFailed) {
       const interval = setInterval(() => {
         moveTheSnakeByOneSquare();
-      }, 150);
+      }, 120);
 
       return () => {
         clearInterval(interval);
@@ -85,20 +91,28 @@ const useSnake = () => {
     );
 
     if (snakeBitesItself || snakeIsOutOfRange) {
-      setSnakeHasFailed(true);
+      // TODO: Удалить варны
+      console.warn("snakeBitesItself: ", snakeBitesItself);
+      console.warn("snakeIsOutOfRange: ", snakeIsOutOfRange);
 
-      setTimeout(() => {
-        setDefaultLastControlKeyPressed();
-        setSnakeIsOutOfRange(false);
-        setSnakeHasFailed(false);
-        generateRandomFoodCoordinate();
-      }, 3000);
+      dispatch(setSnakeHasFailedAction(true));
     }
-  }, [coordinates, snakeIsOutOfRange]);
+  }, [coordinates, snakeIsOutOfRange, snakeHasFailed]);
+
+  // TODO: Удалить
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSnakeIsOutOfRange(false);
+  //     setSnakeHasFailed(false);
+  //   }, 3000);
+  // }, []);
 
   // Back to default coordinates when snake is not stopped
   useEffect(() => {
     if (!snakeHasFailed) {
+      setSnakeIsOutOfRange(false);
+      setDefaultLastControlKeyPressed();
+      generateRandomFoodCoordinate();
       dispatch(setCoordinatesAction(defaultCoordinates));
       dispatch(clearScoreAction());
     }

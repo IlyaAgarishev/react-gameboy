@@ -15,7 +15,7 @@
 }
 
 .gameplayScreen {
-  transition: 1s ease;
+  transition: 0.5s ease;
   width: calc(100% - 40px);
   height: calc(100% - 40px);
   border-radius: 20px;

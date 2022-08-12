@@ -5,6 +5,7 @@ import { Coordinates } from "../../models/SnakeState";
 const initialState: SnakeState = {
   coordinates: defaultCoordinates,
   score: 0,
+  snakeHasFailed: false,
 };
 
 const snakeSlice = createSlice({
@@ -19,6 +20,10 @@ const snakeSlice = createSlice({
     },
     clearScoreAction(state) {
       state.score = 0;
+    },
+
+    setSnakeHasFailedAction(state, action: PayloadAction<boolean>) {
+      state.snakeHasFailed = action.payload;
     },
   },
 });

@@ -6,6 +6,7 @@ import {
   getClassName,
 } from "./utils-gameplay-screen";
 import styles from "./GameplayScreen.module.css";
+import React from "react";
 
 interface IGameplayScreen {
   blur: boolean;
@@ -23,7 +24,7 @@ const GameplayScreen: React.FC<IGameplayScreen> = ({ blur }) => {
   return (
     <div
       className={styles.gameplayScreen}
-      style={{ filter: blur ? "blur(3px)" : "none" }}
+      style={{ filter: blur ? "blur(5px)" : "none" }}
     >
       {matrix.map((el, index) => {
         const background = getBackground({
@@ -56,4 +57,4 @@ const GameplayScreen: React.FC<IGameplayScreen> = ({ blur }) => {
   );
 };
 
-export default GameplayScreen;
+export default React.memo(GameplayScreen);

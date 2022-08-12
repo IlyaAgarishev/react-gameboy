@@ -5,13 +5,17 @@ import Button from "../Button";
 import ControlKey from "../../models/ControlKey";
 import { useEffect } from "react";
 import useOnKeyDown from "../../hooks/useOnKeyDown";
+import snakeSlice from "../../store/reducers/snakeSlice";
+import { useAppDispatch } from "../../hooks/reduxHooks";
 
 const EnterButton = () => {
   const keyDownData = useOnKeyDown();
+  const dispatch = useAppDispatch();
+  const { setSnakeHasFailedAction } = snakeSlice.actions;
 
   useEffect(() => {
     if (keyDownData.key === "Space") {
-      // Do something
+      dispatch(setSnakeHasFailedAction(false));
     }
   }, [keyDownData]);
 
