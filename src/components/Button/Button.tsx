@@ -5,9 +5,10 @@ import styles from "./Button.module.css";
 
 interface IDirectionalButton {
   keyboardButton: ControlKey;
+  content: string;
 }
 
-const Button: React.FC<IDirectionalButton> = ({ keyboardButton }) => {
+const Button: React.FC<IDirectionalButton> = ({ keyboardButton, content }) => {
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
 
   const keyDownData = useOnKeyDown();
@@ -32,7 +33,7 @@ const Button: React.FC<IDirectionalButton> = ({ keyboardButton }) => {
         buttonIsClicked && styles.isActive
       }`}
     >
-      <span />
+      <span>{content}</span>
     </button>
   );
 };

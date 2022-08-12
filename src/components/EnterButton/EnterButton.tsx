@@ -22,7 +22,10 @@ const EnterButton = () => {
   return (
     <div className={styles.enterButton} onClick={keyboardEmulator.pressEnter}>
       {/* TODO: внести новый тип "Space" и убрать каст ! */}
-      <Button keyboardButton={KeyboardButtons.Space as ControlKey} />
+      <Button
+        keyboardButton={KeyboardButtons.Space as ControlKey}
+        content="Space"
+      />
     </div>
   );
 };

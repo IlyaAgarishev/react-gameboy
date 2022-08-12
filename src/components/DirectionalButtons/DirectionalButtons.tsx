@@ -7,16 +7,16 @@ const DirectionalButtons = () => {
   return (
     <div className={styles.controls}>
       <div className={styles.moveLeft} onClick={keyboardEmulator.moveLeft}>
-        <Button keyboardButton={KeyboardButtons.ArrowLeft} />
+        <Button keyboardButton={KeyboardButtons.ArrowLeft} content="←" />
       </div>
       <div className={styles.moveUp} onClick={keyboardEmulator.moveUp}>
-        <Button keyboardButton={KeyboardButtons.ArrowUp} />
+        <Button keyboardButton={KeyboardButtons.ArrowUp} content="↑" />
       </div>
       <div className={styles.moveRight} onClick={keyboardEmulator.moveRight}>
-        <Button keyboardButton={KeyboardButtons.ArrowRight} />
+        <Button keyboardButton={KeyboardButtons.ArrowRight} content="→" />
       </div>
       <div className={styles.moveDown} onClick={keyboardEmulator.moveDown}>
-        <Button keyboardButton={KeyboardButtons.ArrowDown} />
+        <Button keyboardButton={KeyboardButtons.ArrowDown} content="↓" />
       </div>
     </div>
   );
