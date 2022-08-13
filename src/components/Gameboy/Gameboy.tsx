@@ -2,7 +2,6 @@ import styles from "./Gameboy.module.css";
 import Screen from "../Screen";
 import DirectionalButtons from "../DirectionalButtons";
 import EnterButton from "../EnterButton";
-import DiagonalLines from "../DiagonalLines";
 import MadeBy from "../MadeBy";
 
 const Gameboy = () => {
@@ -15,7 +14,6 @@ const Gameboy = () => {
         <MadeBy />
         <DirectionalButtons />
         <EnterButton />
-        <DiagonalLines />
       </div>
     </div>
   );
