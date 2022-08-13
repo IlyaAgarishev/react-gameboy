@@ -21,3 +21,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.screen,
+.battery {
+  transition: 1s ease;
+  opacity: 0;
+}

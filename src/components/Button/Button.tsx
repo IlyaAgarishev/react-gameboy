@@ -13,6 +13,7 @@ const Button: React.FC<IDirectionalButton> = ({ keyboardButton, content }) => {
 
   const keyDownData = useOnKeyDown();
 
+  // TODO: попробовать заменить на react-transition-group
   const click = () => {
     setButtonIsClicked(true);
 
