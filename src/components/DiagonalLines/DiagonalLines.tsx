@@ -4,7 +4,7 @@ import styles from "./DiagonalLines.module.css";
 const DiagonalLines = () => {
   return (
     <div className={styles.diagonalLines}>
-      {[...Array(5)].map(() => (
+      {[...Array(7)].map(() => (
         <div />
       ))}
     </div>
