@@ -6,6 +6,7 @@ interface SnakeState {
   coordinates: Coordinates;
   score: number;
   snakeHasFailed: boolean;
+  bestScore: number;
 }
 
 export default SnakeState;
