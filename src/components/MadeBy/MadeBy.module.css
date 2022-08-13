@@ -1,0 +1,13 @@
+.madeByWrapper {
+  display: flex;
+  width: 100%;
+  background: red;
+  justify-content: flex-end;
+}
+
+.madeBy {
+  position: absolute;
+  margin-top: 40px;
+  margin-right: 5px;
+  color: #a1a1a1;
+}

@@ -3,6 +3,7 @@ import Screen from "../Screen";
 import DirectionalButtons from "../DirectionalButtons";
 import EnterButton from "../EnterButton";
 import DiagonalLines from "../DiagonalLines";
+import MadeBy from "../MadeBy";
 
 const Gameboy = () => {
   return (
@@ -11,6 +12,7 @@ const Gameboy = () => {
         <Screen />
       </div>
       <div className={styles.downBlock}>
+        <MadeBy />
         <DirectionalButtons />
         <EnterButton />
         <DiagonalLines />
