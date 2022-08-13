@@ -1,0 +1,22 @@
+.diagonalLines {
+  display: flex;
+  position: relative;
+  top: 80px;
+  left: 5px;
+}
+
+.diagonalLines div {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  margin-right: 20px;
+}
+
+.diagonalLines div:after {
+  content: "";
+  position: absolute;
+  border-radius: 20px;
+  border-top: 20px solid #afafaf7d;
+  width: 65px;
+  transform: rotate(-60deg);
+}
