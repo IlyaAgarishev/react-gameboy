@@ -45,7 +45,8 @@ const useSnake = () => {
     generateRandomFoodCoordinate,
     randomFoodColor,
   } = useRandomFoodCoordinate();
-  const { snakeIsOutOfRange, setSnakeIsOutOfRange } = useSnakeIsOutOfRange();
+
+  useSnakeIsOutOfRange();
 
   // Keep snake moving
   useEffect(() => {
@@ -90,27 +91,14 @@ const useSnake = () => {
       (coordinate) => coordinate === lastSnakeCoordinate
     );
 
-    if (snakeBitesItself || snakeIsOutOfRange) {
-      // TODO: Удалить варны
-      console.warn("snakeBitesItself: ", snakeBitesItself);
-      console.warn("snakeIsOutOfRange: ", snakeIsOutOfRange);
-
+    if (snakeBitesItself) {
       dispatch(setSnakeHasFailedAction(true));
     }
-  }, [coordinates, snakeIsOutOfRange, snakeHasFailed]);
-
-  // TODO: Удалить
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setSnakeIsOutOfRange(false);
-  //     setSnakeHasFailed(false);
-  //   }, 3000);
-  // }, []);
+  }, [coordinates]);
 
   // Back to default coordinates when snake is not stopped
   useEffect(() => {
     if (!snakeHasFailed) {
-      setSnakeIsOutOfRange(false);
       setDefaultLastControlKeyPressed();
       generateRandomFoodCoordinate();
       dispatch(setCoordinatesAction(defaultCoordinates));

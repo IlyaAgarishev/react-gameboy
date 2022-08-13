@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
-import { useAppSelector } from "../reduxHooks";
+import { useEffect } from "react";
+import snakeSlice from "../../store/reducers/snakeSlice";
+import { useAppDispatch, useAppSelector } from "../reduxHooks";
 import {
   checkIfSnakeIsOutOfHorizontalRange,
   checkIfSnakeIsOutOfVerticalRange,
 } from "./utils-use-snake-is-out-of-range";
 
-type HookReturns = {
-  snakeIsOutOfRange: boolean;
-  setSnakeIsOutOfRange: (snakeIsOutOfRange: boolean) => void;
-};
-
-const useSnakeIsOutOfRange = (): HookReturns => {
+const useSnakeIsOutOfRange = () => {
   const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
-  const [snakeIsOutOfRange, setSnakeIsOutOfRange] = useState(false);
+  const { setSnakeHasFailedAction } = snakeSlice.actions;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     // Getting last coordinate of the snake
@@ -31,11 +28,9 @@ const useSnakeIsOutOfRange = (): HookReturns => {
     });
 
     if (snakeIsOutOfVerticalRange || snakeIsOutOfHorizontalRange) {
-      setSnakeIsOutOfRange(true);
+      dispatch(setSnakeHasFailedAction(true));
     }
   }, [coordinates]);
-
-  return { snakeIsOutOfRange, setSnakeIsOutOfRange };
 };
 
 export default useSnakeIsOutOfRange;

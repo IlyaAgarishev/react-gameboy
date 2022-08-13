@@ -24,7 +24,7 @@ const GameplayScreen: React.FC<IGameplayScreen> = ({ blur }) => {
   return (
     <div
       className={styles.gameplayScreen}
-      style={{ filter: blur ? "blur(5px)" : "none" }}
+      style={{ filter: blur ? "blur(6px)" : "none" }}
     >
       {matrix.map((el, index) => {
         const background = getBackground({
