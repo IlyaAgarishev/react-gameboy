@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import useRandomFoodCoordinate from "./useRandomFood";
-import useSnakeIsOutOfRange from "./useSnakeIsOutOfRange";
 import useSnakeColor from "./useSnakeColor";
 import { useAppDispatch, useAppSelector } from "./reduxHooks";
 import snakeSlice from "../store/reducers/snakeSlice";
 import { Coordinates, defaultCoordinates } from "../models/SnakeState";
 import useSnakeMotion from "./useSnakeMotion";
-
-const getCoordinatesWithoutTheLastOne = (coordinates: Coordinates) => {
-  const copiedCoordinates = [...coordinates];
-  copiedCoordinates.pop();
-
-  return copiedCoordinates;
-};
+import useSnakeHasFailed from "./useSnakeHasFailed";
 
 const useSnake = () => {
   const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
@@ -22,12 +15,8 @@ const useSnake = () => {
   );
 
   const dispatch = useAppDispatch();
-  const {
-    setCoordinatesAction,
-    incrementScoreAction,
-    clearScoreAction,
-    setSnakeHasFailedAction,
-  } = snakeSlice.actions;
+  const { setCoordinatesAction, incrementScoreAction, clearScoreAction } =
+    snakeSlice.actions;
 
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
@@ -46,7 +35,8 @@ const useSnake = () => {
     randomFoodColor,
   } = useRandomFoodCoordinate();
 
-  useSnakeIsOutOfRange();
+  // listening if snake is failed
+  useSnakeHasFailed();
 
   // Keep snake moving
   useEffect(() => {
@@ -80,23 +70,7 @@ const useSnake = () => {
     }
   }, [coordinates, randomFoodCoordinate, snakeColor, randomFoodColor]);
 
-  // Snake bites itself logic
-  useEffect(() => {
-    const lastSnakeCoordinate = coordinates[coordinates.length - 1];
-
-    const coordinatesWithoutTheLastOne =
-      getCoordinatesWithoutTheLastOne(coordinates);
-
-    const snakeBitesItself = coordinatesWithoutTheLastOne.some(
-      (coordinate) => coordinate === lastSnakeCoordinate
-    );
-
-    if (snakeBitesItself) {
-      dispatch(setSnakeHasFailedAction(true));
-    }
-  }, [coordinates]);
-
-  // Back to default coordinates when snake is not stopped
+  // Back to default coordinates when snake is not failed
   useEffect(() => {
     if (!snakeHasFailed) {
       setDefaultLastControlKeyPressed();
@@ -106,7 +80,7 @@ const useSnake = () => {
     }
   }, [snakeHasFailed]);
 
-  // Return the object from hook
+  // Return the object from the hook
   return {
     coordinates,
     randomFoodCoordinate,

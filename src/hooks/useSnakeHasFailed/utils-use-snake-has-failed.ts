@@ -1,4 +1,5 @@
 import { matrix } from "../../constants";
+import { Coordinates } from "../../models/SnakeState";
 
 interface ICheckIfSnakeIsOutOfVerticalRange {
   lastCoordinate: number;
@@ -33,3 +34,8 @@ export const checkIfSnakeIsOutOfHorizontalRange = ({
 
   return false;
 };
+
+// Удаляем последнюю координату и возвращаем новый массив
+export const getCoordinatesWithoutTheLastOne = (coordinates: Coordinates) => [
+  ...coordinates.slice(0, -1),
+];
