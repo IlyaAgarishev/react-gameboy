@@ -8,7 +8,7 @@ const rootReducer = combineReducers({ snakeReducer });
 const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: isProductionMode() ? [] : [ReduxLogger],
+    middleware: isProductionMode ? [] : [ReduxLogger],
   });
 };
 
