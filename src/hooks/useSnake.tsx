@@ -9,6 +9,7 @@ import useSnakeMotion from "./useSnakeMotion";
 import useSnakeHasFailed from "./useSnakeHasFailed";
 
 const useSnake = () => {
+  // redux hooks:
   const dispatch = useAppDispatch();
   const { setCoordinatesAction, incrementScoreAction, clearScoreAction } =
     snakeSlice.actions;
@@ -17,24 +18,30 @@ const useSnake = () => {
     (state) => state.snakeReducer.snakeHasFailed
   );
 
+  // custom hooks:
+
+  // useLastControlKeyPressed - to know remember the direction of the snake
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();
 
+  // useSnakeMotion  - to move, control and make snake bigger
   const {
     increaseTheSizeOfSnake,
     changeSnakeDirection,
     moveTheSnakeByOneSquare,
   } = useSnakeMotion(lastControlKeyPressed);
 
+  // useSnakeColor - to define snake's color
   const { snakeColor, setSnakeColor } = useSnakeColor();
 
+  // useRandomFoodCoordinate - to get food's coordinate and color
   const {
     randomFoodCoordinate,
     generateRandomFoodCoordinate,
     randomFoodColor,
   } = useRandomFoodCoordinate();
 
-  // listening if snake is failed
+  //useSnakeHasFailed - listening if snake is failed
   useSnakeHasFailed();
 
   // Keep snake moving

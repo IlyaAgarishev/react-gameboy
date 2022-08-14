@@ -5,7 +5,6 @@ const useSnakeColor = () => {
   const [snakeColor, setSnakeColor] = useState<Colors>(Colors.Green);
 
   // TODO: EPILEPSIA MODE to implement in future
-
   // useEffect(() => {
   //   setInterval(() => {
   //     setSnakeColor(
