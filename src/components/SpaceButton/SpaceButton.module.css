@@ -1,6 +1,9 @@
 .spaceButton {
-  margin-top: 70px;
-  margin-left: 306px;
+  position: relative;
+  display: flex;
+  justify-content: end;
+  margin-top: 60px;
+  margin-right: 50px;
 }
 
 .spaceButton span {
