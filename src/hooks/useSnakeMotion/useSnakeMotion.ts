@@ -10,6 +10,10 @@ import {
 } from "./utils-use-snake-motion";
 import ControlKey from "../../models/ControlKey";
 
+// describes 3 functions related to motion:
+// 1) increaseTheSizeOfSnake
+// 2) changeSnakeDirection
+// 3) moveTheSnakeByOneSquare
 const useSnakeMotion = (lastControlKeyPressed: ControlKey) => {
   const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
   const dispatch = useAppDispatch();

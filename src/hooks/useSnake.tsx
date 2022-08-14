@@ -9,14 +9,13 @@ import useSnakeMotion from "./useSnakeMotion";
 import useSnakeHasFailed from "./useSnakeHasFailed";
 
 const useSnake = () => {
+  const dispatch = useAppDispatch();
+  const { setCoordinatesAction, incrementScoreAction, clearScoreAction } =
+    snakeSlice.actions;
   const coordinates = useAppSelector((state) => state.snakeReducer.coordinates);
   const snakeHasFailed = useAppSelector(
     (state) => state.snakeReducer.snakeHasFailed
   );
-
-  const dispatch = useAppDispatch();
-  const { setCoordinatesAction, incrementScoreAction, clearScoreAction } =
-    snakeSlice.actions;
 
   const { lastControlKeyPressed, setDefaultLastControlKeyPressed } =
     useLastControlKeyPressed();

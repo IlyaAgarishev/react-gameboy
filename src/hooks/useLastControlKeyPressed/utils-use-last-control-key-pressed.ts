@@ -11,6 +11,8 @@ const controlKeys = [
 
 const isControlKey = (x: any): x is ControlKey => controlKeys.includes(x);
 
+// Checks if key is right. Example: if we click 'right' button, and then click "left" button - we want snake to ignore it.
+// Because it is immposible to change direction from right to left.
 const isRightKey = (key: ControlKey, lastKeyPressed: ControlKey) => {
   const getKeysConflict = (keys: string[]): boolean => {
     const [a, b] = keys;
