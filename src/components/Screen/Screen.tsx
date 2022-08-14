@@ -25,7 +25,7 @@ const Screen = () => {
         className={styles.screen}
         style={{ opacity: screenIsActivated ? "1" : "0" }}
       >
-        {gameIsStarted ? (
+        {screenIsActivated && gameIsStarted ? (
           <>
             {snakeHasFailed && <ContinueScreen />}
             <GameplayScreen blur={snakeHasFailed} />
