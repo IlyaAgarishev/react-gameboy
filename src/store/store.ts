@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import ReduxLogger from "redux-logger";
+import { isProductionMode } from "../constants";
 import { snakeReducer } from "./reducers/snakeSlice";
 
 const rootReducer = combineReducers({ snakeReducer });
@@ -7,7 +8,7 @@ const rootReducer = combineReducers({ snakeReducer });
 const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: [ReduxLogger],
+    middleware: isProductionMode() ? [] : [ReduxLogger],
   });
 };
 

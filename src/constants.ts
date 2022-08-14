@@ -17,3 +17,7 @@ export const isMobile = (() => {
     return navigator.userAgent.match(toMatchItem);
   });
 })();
+
+export const isProductionMode = () => {
+  return process.env.NODE_ENV === "production";
+};
