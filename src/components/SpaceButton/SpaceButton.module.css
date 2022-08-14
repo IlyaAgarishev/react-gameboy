@@ -3,10 +3,20 @@
   display: flex;
   justify-content: end;
   margin-top: 60px;
+  margin-left: 100px;
   margin-right: 50px;
 }
 
 .spaceButton span {
-  padding: 35px;
+  padding: 20px;
   transform: translateY(-4px) translateX(-4px);
+}
+
+@media screen and (max-width: 600px) {
+  .spaceButton {
+    justify-content: start;
+    margin-top: 0;
+    margin-right: 0px;
+    margin-left: 189px;
+  }
 }

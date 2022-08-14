@@ -20,3 +20,10 @@
   width: 100%;
   height: 50%;
 }
+
+@media screen and (max-width: 600px) {
+  .gameboy {
+    width: var(--mobile-width-gameboy);
+    height: var(--mobile-height-gameboy);
+  }
+}

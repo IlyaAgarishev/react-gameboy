@@ -2,6 +2,8 @@
   --main-grey: #e0e0e0;
   --desktop-width-gameboy: 31.25rem;
   --desktop-height-gameboy: 50rem;
+  --mobile-width-gameboy: 18rem;
+  --mobile-height-gameboy: 31rem;
 }
 
 .app {
@@ -9,4 +11,10 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+@media screen and (max-width: 600px) {
+  .app {
+    height: 70vh;
+  }
 }

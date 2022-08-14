@@ -27,3 +27,17 @@
   transition: 1s ease;
   opacity: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .screenWrapper {
+    height: calc(100% - 39px);
+    background: #161616;
+    border-radius: 20px;
+    padding: 30px 30px;
+  }
+
+  .battery {
+    margin-left: -19px;
+    padding: 3px;
+  }
+}

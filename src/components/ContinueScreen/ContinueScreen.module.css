@@ -19,3 +19,9 @@
   padding: 4px 7px;
   font-size: 17px;
 }
+
+@media screen and (max-width: 600px) {
+  .continueScreen div {
+    font-size: 9px;
+  }
+}
