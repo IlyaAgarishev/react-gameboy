@@ -20,13 +20,16 @@
   font-size: 17px;
 }
 
+.continueScreen a {
+  color: white;
+}
+
 @media screen and (max-width: 600px) {
   .continueScreen div {
     font-size: 9px;
   }
 
   .continueScreen a {
-    color: white;
     font-size: 9px;
   }
 }
