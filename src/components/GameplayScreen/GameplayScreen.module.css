@@ -24,3 +24,8 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
+
+.gameplayScreen div {
+  background: #3a3c39;
+  border: 1px solid #333532;
+}
