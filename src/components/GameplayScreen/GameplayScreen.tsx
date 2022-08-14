@@ -1,5 +1,5 @@
 import { matrix } from "../../constants";
-import useSnake from "../../hooks/useSnake";
+import useSnake from "../../hooks/useSnake/useSnake";
 import { getGameSquareData } from "./utils-gameplay-screen";
 import styles from "./GameplayScreen.module.css";
 import React from "react";
