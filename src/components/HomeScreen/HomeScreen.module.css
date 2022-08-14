@@ -1,0 +1,38 @@
+.homeScreen {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  z-index: 1;
+  position: absolute;
+}
+
+.snakeScreenMock {
+  transition: 0.5s ease;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  border-radius: 20px;
+  background: #333532;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  filter: blur(3px);
+}
+
+.snakeScreenMock div {
+  background: rgb(58, 60, 57);
+  border: 1px solid #333532;
+  transition: 1s ease;
+}
+
+.startWordsWrapper {
+  background: #00000026;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .startWordsWrapper {
+    font-size: 10px;
+  }
+}
