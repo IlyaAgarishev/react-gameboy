@@ -11,13 +11,18 @@ export const getRandomColor = (): Colors => {
 };
 
 export const getRandomCoordinate = (coordinates: Coordinates): number => {
-  const matrixWithoutSnakeCoordinates = matrix.filter(
-    (el) => !coordinates.includes(el)
+  const anglesCoordinates = [0, 11, 143, 132];
+
+  // bannedCoordinates - координаты змеи и угловые координаты
+  const bannedCoordinates = [...coordinates, ...anglesCoordinates];
+
+  const matrixWithoutBannedCoordinates = matrix.filter(
+    (el) => !bannedCoordinates.includes(el)
   );
 
   const randomIndex = Math.floor(
-    Math.random() * matrixWithoutSnakeCoordinates.length
+    Math.random() * matrixWithoutBannedCoordinates.length
   );
 
-  return matrixWithoutSnakeCoordinates[randomIndex];
+  return matrixWithoutBannedCoordinates[randomIndex];
 };
