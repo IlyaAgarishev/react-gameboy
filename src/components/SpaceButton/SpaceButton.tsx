@@ -20,12 +20,14 @@ const SpaceButton = () => {
   }, [keyDownData]);
 
   return (
-    <div className={styles.spaceButton} onClick={keyboardEmulator.pressSpace}>
-      {/* TODO: внести новый тип "Space" и убрать каст ! */}
-      <Button
-        keyboardButton={KeyboardButtons.Space as ControlKey}
-        content="Space"
-      />
+    <div className={styles.spaceButtonWrapper}>
+      <div className={styles.spaceButton} onClick={keyboardEmulator.pressSpace}>
+        {/* TODO: внести новый тип "Space" и убрать каст ! */}
+        <Button
+          keyboardButton={KeyboardButtons.Space as ControlKey}
+          content="Space"
+        />
+      </div>
     </div>
   );
 };
