@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { KeyboardButtons } from "../../enums/KeyboardButtons";
-import ControlKey from "../../models/ControlKey";
-import useOnKeyDown from "../useOnKeyDown";
+import { KeyboardButtons } from "../../../enums/KeyboardButtons";
+import ControlKey from "../../../models/ControlKey";
+import useOnKeyDown from "../../useOnKeyDown";
 import { isControlKey, isRightKey } from "./utils-use-last-control-key-pressed";
 
 interface ReturnUseLastControlKeyPressed {

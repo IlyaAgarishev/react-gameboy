@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Colors } from "../enums/Colors";
+import { Colors } from "../../enums/Colors";
 
 const useSnakeColor = () => {
   const [snakeColor, setSnakeColor] = useState<Colors>(Colors.Green);

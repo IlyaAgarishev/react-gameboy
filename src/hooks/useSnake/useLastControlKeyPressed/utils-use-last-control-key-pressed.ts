@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { KeyboardButtons } from "../../enums/KeyboardButtons";
-import ControlKey from "../../models/ControlKey";
+import { KeyboardButtons } from "../../../enums/KeyboardButtons";
+import ControlKey from "../../../models/ControlKey";
 
 const controlKeys = [
   "ArrowUp",

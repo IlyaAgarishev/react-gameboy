@@ -1,5 +1,5 @@
-import { matrix } from "../../constants";
-import { Coordinates } from "../../models/SnakeState";
+import { matrix } from "../../../constants";
+import { Coordinates } from "../../../models/SnakeState";
 
 interface ICheckIfSnakeIsOutOfVerticalRange {
   lastCoordinate: number;

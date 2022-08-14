@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import useLastControlKeyPressed from "./useLastControlKeyPressed";
 import useRandomFoodCoordinate from "./useRandomFood";
 import useSnakeColor from "./useSnakeColor";
-import { useAppDispatch, useAppSelector } from "./reduxHooks";
-import snakeSlice from "../store/reducers/snakeSlice";
-import { defaultCoordinates } from "../models/SnakeState";
+import { useAppDispatch, useAppSelector } from "../reduxHooks";
+import snakeSlice from "../../store/reducers/snakeSlice";
+import { defaultCoordinates } from "../../models/SnakeState";
 import useSnakeMotion from "./useSnakeMotion";
 import useSnakeHasFailed from "./useSnakeHasFailed";
 

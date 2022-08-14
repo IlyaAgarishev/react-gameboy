@@ -1,6 +1,6 @@
-import { matrix } from "../../constants";
-import { Colors } from "../../enums/Colors";
-import { Coordinates } from "../../models/SnakeState";
+import { matrix } from "../../../constants";
+import { Colors } from "../../../enums/Colors";
+import { Coordinates } from "../../../models/SnakeState";
 
 export const getRandomColor = (): Colors => {
   const randomColorIndex = Math.floor(

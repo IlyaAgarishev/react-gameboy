@@ -1,6 +1,6 @@
 import useLastControlKeyPressed from "../useLastControlKeyPressed";
-import { useAppDispatch, useAppSelector } from "../reduxHooks";
-import snakeSlice from "../../store/reducers/snakeSlice";
+import { useAppDispatch, useAppSelector } from "../../reduxHooks";
+import snakeSlice from "../../../store/reducers/snakeSlice";
 import { isControlKey } from "../useLastControlKeyPressed/utils-use-last-control-key-pressed";
 import { useCallback } from "react";
 import {
@@ -8,7 +8,7 @@ import {
   getIncreasedCoordinates,
   sliceFirstThanAddNewAndGetNewCoordinates,
 } from "./utils-use-snake-motion";
-import ControlKey from "../../models/ControlKey";
+import ControlKey from "../../../models/ControlKey";
 
 // useSnakeMotion describes 3 functions related to motion:
 // 1) increaseTheSizeOfSnake

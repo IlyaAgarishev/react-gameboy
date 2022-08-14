@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import snakeSlice from "../../store/reducers/snakeSlice";
-import { useAppDispatch, useAppSelector } from "../reduxHooks";
+import snakeSlice from "../../../store/reducers/snakeSlice";
+import { useAppDispatch, useAppSelector } from "../../reduxHooks";
 import {
   checkIfSnakeIsOutOfHorizontalRange,
   checkIfSnakeIsOutOfVerticalRange,

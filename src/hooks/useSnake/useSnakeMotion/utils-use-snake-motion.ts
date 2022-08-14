@@ -1,6 +1,6 @@
-import ControlKey from "../../models/ControlKey";
-import Directions from "../../models/Directions";
-import { Coordinates } from "../../models/SnakeState";
+import ControlKey from "../../../models/ControlKey";
+import Directions from "../../../models/Directions";
+import { Coordinates } from "../../../models/SnakeState";
 
 const directions: Directions = {
   ArrowUp: -12,
