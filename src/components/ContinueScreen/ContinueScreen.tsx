@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { isMobile } from "../../constants";
 import { Colors } from "../../enums/Colors";
 import { useAppSelector } from "../../hooks/reduxHooks";
-import useOnKeyDown from "../../hooks/useOnKeyDown";
+import useOnKeyDown from "../../hooks/useOneKeyDown";
 import styles from "./ContinueScreen.module.css";
 
 const ContinueScreen = () => {

@@ -4,7 +4,7 @@ import keyboardEmulator from "../../classes/KeyboardEmulator";
 import Button from "../Button";
 import ControlKey from "../../models/ControlKey";
 import { useEffect } from "react";
-import useOnKeyDown from "../../hooks/useOnKeyDown";
+import useOnKeyDown from "../../hooks/useOneKeyDown";
 import snakeSlice from "../../store/reducers/snakeSlice";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 

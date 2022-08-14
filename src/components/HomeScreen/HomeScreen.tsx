@@ -1,7 +1,7 @@
 import { matrix } from "../../constants";
 import styles from "./HomeScreen.module.css";
 import React, { Dispatch, SetStateAction, useEffect } from "react";
-import useOnKeyDown from "../../hooks/useOnKeyDown";
+import useOnKeyDown from "../../hooks/useOneKeyDown";
 
 interface IHomeScreen {
   setGameIsStarted: Dispatch<SetStateAction<boolean>>;
