@@ -1,10 +1,6 @@
 import { matrix } from "../../constants";
 import useSnake from "../../hooks/useSnake";
-import {
-  getBackground,
-  getBorder,
-  getClassName,
-} from "./utils-gameplay-screen";
+import { getGameSquareData } from "./utils-gameplay-screen";
 import styles from "./GameplayScreen.module.css";
 import React from "react";
 
@@ -13,13 +9,7 @@ interface IGameplayScreen {
 }
 
 const GameplayScreen: React.FC<IGameplayScreen> = ({ blur }) => {
-  const {
-    coordinates,
-    randomFoodCoordinate,
-    snakeHasFailed,
-    randomFoodColor,
-    snakeColor,
-  } = useSnake();
+  const snakeData = useSnake();
 
   return (
     <div
@@ -27,19 +17,9 @@ const GameplayScreen: React.FC<IGameplayScreen> = ({ blur }) => {
       style={{ filter: blur ? "blur(6px)" : "none" }}
     >
       {matrix.map((el, index) => {
-        const background = getBackground({
-          coordinates,
+        const { background, border, className } = getGameSquareData({
           index,
-          randomFoodCoordinate,
-          randomFoodColor,
-          snakeColor,
-          snakeHasFailed,
-        });
-        const border = getBorder(snakeHasFailed);
-        const className = getClassName({
-          coordinates,
-          snakeHasFailed,
-          index,
+          ...snakeData,
         });
 
         return (

@@ -9,7 +9,7 @@
   text-align: center;
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
   z-index: 1;
   position: absolute;
 }
@@ -17,7 +17,6 @@
 .continueScreen div {
   margin-bottom: 12px;
   padding: 4px 7px;
-  font-size: 17px;
 }
 
 .continueScreen a {
@@ -25,7 +24,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .continueScreen div {
+  .continueScreen {
     font-size: 9px;
   }
 

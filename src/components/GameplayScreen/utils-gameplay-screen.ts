@@ -8,7 +8,7 @@ enum EnvironmentColors {
 }
 
 // getBorder logic
-export const getBorder = (snakeHasFailed: boolean): string => {
+const getBorder = (snakeHasFailed: boolean): string => {
   if (snakeHasFailed) {
     return `1px solid ${Colors.Red}`;
   }
@@ -26,7 +26,7 @@ interface IGetBackground {
   snakeHasFailed: boolean;
 }
 
-export const getBackground = ({
+const getBackground = ({
   randomFoodCoordinate,
   coordinates,
   index,
@@ -56,7 +56,7 @@ interface IGetClassName {
   snakeHasFailed: boolean;
 }
 
-export const getClassName = ({
+const getClassName = ({
   coordinates,
   snakeHasFailed,
   index,
@@ -64,4 +64,39 @@ export const getClassName = ({
   if (coordinates.some((cordinate) => cordinate === index) && snakeHasFailed) {
     return styles.snakeBlinks;
   }
+};
+
+interface IGetGameSquareData {
+  randomFoodCoordinate: number;
+  coordinates: Coordinates;
+  index: number;
+  randomFoodColor: Colors;
+  snakeColor: Colors;
+  snakeHasFailed: boolean;
+}
+
+export const getGameSquareData = ({
+  randomFoodCoordinate,
+  coordinates,
+  index,
+  randomFoodColor,
+  snakeColor,
+  snakeHasFailed,
+}: IGetGameSquareData) => {
+  const className = getClassName({ coordinates, snakeHasFailed, index });
+  const border = getBorder(snakeHasFailed);
+  const background = getBackground({
+    randomFoodCoordinate,
+    coordinates,
+    index,
+    randomFoodColor,
+    snakeColor,
+    snakeHasFailed,
+  });
+
+  return {
+    background,
+    border,
+    className,
+  };
 };

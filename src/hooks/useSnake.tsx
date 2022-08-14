@@ -4,7 +4,7 @@ import useRandomFoodCoordinate from "./useRandomFood";
 import useSnakeColor from "./useSnakeColor";
 import { useAppDispatch, useAppSelector } from "./reduxHooks";
 import snakeSlice from "../store/reducers/snakeSlice";
-import { Coordinates, defaultCoordinates } from "../models/SnakeState";
+import { defaultCoordinates } from "../models/SnakeState";
 import useSnakeMotion from "./useSnakeMotion";
 import useSnakeHasFailed from "./useSnakeHasFailed";
 
@@ -82,11 +82,11 @@ const useSnake = () => {
 
   // Return the object from the hook
   return {
-    coordinates,
     randomFoodCoordinate,
-    snakeHasFailed,
     randomFoodColor,
     snakeColor,
+    coordinates,
+    snakeHasFailed,
   };
 };
 
