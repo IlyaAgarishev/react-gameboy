@@ -10,7 +10,7 @@ const useTurnOnGameboy = () => {
 
       setTimeout(() => {
         setScreenIsActivated(true);
-      }, 1000);
+      }, 650);
     }, 500);
   }, []);
 
