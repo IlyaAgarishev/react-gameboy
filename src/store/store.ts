@@ -1,5 +1,3 @@
-/// <reference types="redux-persist" />
-
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import ReduxLogger from "redux-logger";
 import { snakeReducer } from "./reducers/snakeSlice";
