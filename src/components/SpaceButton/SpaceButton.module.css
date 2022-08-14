@@ -1,9 +1,9 @@
-.enterButton {
+.spaceButton {
   margin-top: 70px;
   margin-left: 306px;
 }
 
-.enterButton span {
+.spaceButton span {
   padding: 35px;
   transform: translateY(-4px) translateX(-4px);
 }

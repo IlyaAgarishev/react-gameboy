@@ -22,7 +22,7 @@ class KeyboardEmulator {
     this.pressKey(KeyboardButtons.ArrowDown);
   };
 
-  pressEnter = () => {
+  pressSpace = () => {
     // TODO: внести новый тип "Space" и убрать каст !
     this.pressKey(KeyboardButtons.Space as ControlKey);
   };

@@ -1,7 +1,7 @@
 import styles from "./Gameboy.module.css";
 import Screen from "../Screen";
 import DirectionalButtons from "../DirectionalButtons";
-import EnterButton from "../EnterButton";
+import SpaceButton from "../SpaceButton";
 import MadeBy from "../MadeBy";
 
 const Gameboy = () => {
@@ -13,7 +13,7 @@ const Gameboy = () => {
       <div className={styles.downBlock}>
         <MadeBy />
         <DirectionalButtons />
-        <EnterButton />
+        <SpaceButton />
       </div>
     </div>
   );
