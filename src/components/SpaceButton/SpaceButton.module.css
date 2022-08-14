@@ -8,7 +8,7 @@
 }
 
 .spaceButton span {
-  padding: 20px;
+  padding: 35px;
   transform: translateY(-4px) translateX(-4px);
 }
 
@@ -18,5 +18,9 @@
     margin-top: 0;
     margin-right: 0px;
     margin-left: 189px;
+  }
+
+  .spaceButton span {
+    padding: 20px;
   }
 }
