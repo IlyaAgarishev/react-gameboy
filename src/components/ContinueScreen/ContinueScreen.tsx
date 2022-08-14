@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { isMobile } from "../../constants";
 import { Colors } from "../../enums/Colors";
 import { useAppSelector } from "../../hooks/reduxHooks";
 import useOnKeyDown from "../../hooks/useOnKeyDown";
@@ -27,10 +28,22 @@ const ContinueScreen = () => {
         Press <span className={styles.spaceButtonOnScreen}>"Space"</span> to
         start again
       </div>
-      <div>
-        Press <span className={styles.spaceButtonOnScreen}>"G"</span> to see the
-        <span style={{ color: "#afafaf" }}> github</span> project
-      </div>
+
+      {isMobile ? (
+        <a
+          href="https://github.com/IlyaAgarishev/react-gameboy"
+          target="_blank"
+        >
+          Tap to see the
+          <span style={{ color: "#afafaf" }}> github</span> project
+        </a>
+      ) : (
+        <div>
+          Press <span className={styles.spaceButtonOnScreen}>"G"</span> to see
+          the
+          <span style={{ color: "#afafaf" }}> github</span> project
+        </div>
+      )}
     </div>
   );
 };

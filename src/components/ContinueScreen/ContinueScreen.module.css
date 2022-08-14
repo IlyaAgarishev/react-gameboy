@@ -24,4 +24,9 @@
   .continueScreen div {
     font-size: 9px;
   }
+
+  .continueScreen a {
+    color: white;
+    font-size: 9px;
+  }
 }
