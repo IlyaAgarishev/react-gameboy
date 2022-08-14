@@ -11,7 +11,7 @@ interface IDirectionalButton {
 const Button: React.FC<IDirectionalButton> = ({ keyboardButton, content }) => {
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
 
-  const keyDownData = useOnKeyDown();
+  const keyDownData = useOnKeyDown({ requestedKeys: keyboardButton });
 
   // TODO: попробовать заменить на react-transition-group
   const click = () => {

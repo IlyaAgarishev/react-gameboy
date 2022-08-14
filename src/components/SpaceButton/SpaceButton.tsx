@@ -9,7 +9,7 @@ import snakeSlice from "../../store/reducers/snakeSlice";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 
 const SpaceButton = () => {
-  const keyDownData = useOnKeyDown();
+  const keyDownData = useOnKeyDown({ requestedKeys: "Space" });
   const dispatch = useAppDispatch();
   const { setSnakeHasFailedAction } = snakeSlice.actions;
 

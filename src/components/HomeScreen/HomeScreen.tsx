@@ -8,7 +8,7 @@ interface IHomeScreen {
 }
 
 const HomeScreen: React.FC<IHomeScreen> = ({ setGameIsStarted }) => {
-  const keydwon = useOnKeyDown();
+  const keydwon = useOnKeyDown({ requestedKeys: "Space" });
 
   useEffect(() => {
     if (keydwon.key === "Space") {

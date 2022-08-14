@@ -8,7 +8,8 @@ import styles from "./ContinueScreen.module.css";
 const ContinueScreen = () => {
   const score = useAppSelector((state) => state.snakeReducer.score);
   const bestScore = useAppSelector((state) => state.snakeReducer.bestScore);
-  const keyDownData = useOnKeyDown();
+
+  const keyDownData = useOnKeyDown({ requestedKeys: "g" });
 
   useEffect(() => {
     if (keyDownData.key === "g") {

@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { KeyboardButtons } from "../../../enums/KeyboardButtons";
 import ControlKey from "../../../models/ControlKey";
 import useOnKeyDown from "../../useOnKeyDown";
-import { isControlKey, isRightKey } from "./utils-use-last-control-key-pressed";
+import {
+  controlKeys,
+  isControlKey,
+  isRightKey,
+} from "./utils-use-last-control-key-pressed";
 
 interface ReturnUseLastControlKeyPressed {
   lastControlKeyPressed: ControlKey;
@@ -12,7 +16,7 @@ interface ReturnUseLastControlKeyPressed {
 const useLastControlKeyPressed = (): ReturnUseLastControlKeyPressed => {
   const defaulKey = KeyboardButtons.ArrowRight;
 
-  const keyDownData = useOnKeyDown();
+  const keyDownData = useOnKeyDown({ requestedKeys: [...controlKeys] });
   const [lastControlKeyPressed, setLastControlKeyPressed] =
     useState<ControlKey>(defaulKey);
 
