@@ -26,6 +26,7 @@ const useLastControlKeyPressed = (): ReturnUseLastControlKeyPressed => {
     if (isControlKey(key) && isRightKey(key, lastControlKeyPressed)) {
       setLastControlKeyPressed(key);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyDownData]);
 
   const setDefaultLastControlKeyPressed = () => {
