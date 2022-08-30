@@ -19,7 +19,7 @@ const Button: React.FC<IDirectionalButton> = ({ keyboardButton, content }) => {
 
     setTimeout(() => {
       setButtonIsClicked(false);
-    }, 100);
+    }, 120);
   };
 
   useEffect(() => {
