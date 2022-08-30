@@ -11,7 +11,6 @@ const Screen = () => {
     (state) => state.snakeReducer.snakeHasFailed
   );
 
-  // TODO: попробовать заменить на react-transition-group
   const { batteryIsActivated, screenIsActivated } = useTurnOnGameboy();
 
   const [gameIsStarted, setGameIsStarted] = useState(false);
@@ -20,6 +19,7 @@ const Screen = () => {
     <div className={styles.screenWrapper}>
       <div
         className={styles.battery}
+        // TODO: попробовать заменить на react-transition-group
         style={{ opacity: batteryIsActivated ? "1" : "0" }}
       />
       <div
