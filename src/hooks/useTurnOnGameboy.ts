@@ -4,6 +4,7 @@ const useTurnOnGameboy = () => {
   const [batteryIsActivated, setBatteryIsActivated] = useState(false);
   const [screenIsActivated, setScreenIsActivated] = useState(false);
 
+  // TODO: попробовать заменить на react-transition-group
   useEffect(() => {
     setTimeout(() => {
       setBatteryIsActivated(true);
