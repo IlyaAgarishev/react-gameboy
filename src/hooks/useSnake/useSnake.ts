@@ -55,7 +55,6 @@ const useSnake = () => {
         clearInterval(interval);
       };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coordinates, lastControlKeyPressed, snakeHasFailed]);
 
   // Change snake direction onkeydown
@@ -63,7 +62,6 @@ const useSnake = () => {
     if (!snakeHasFailed) {
       changeSnakeDirection(lastControlKeyPressed);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastControlKeyPressed]);
 
   // Snake Eating logic
@@ -76,7 +74,6 @@ const useSnake = () => {
       generateRandomFoodCoordinate();
       increaseTheSizeOfSnake();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coordinates, randomFoodCoordinate, snakeColor, randomFoodColor]);
 
   // Back to default coordinates when snake is not failed
@@ -87,7 +84,6 @@ const useSnake = () => {
       dispatch(setCoordinatesAction(defaultCoordinates));
       dispatch(clearScoreAction());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [snakeHasFailed]);
 
   // Return the object from the hook
