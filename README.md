@@ -1,6 +1,6 @@
 ### React Gameboy
 
-[![Play now](https://react-gameboy.netlify.app/)
+#### Play now: https://react-gameboy.netlify.app/
 
 The main idea was to create my own game logic without using canvas or any side game library.
 
