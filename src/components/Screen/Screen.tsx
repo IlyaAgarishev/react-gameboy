@@ -19,11 +19,12 @@ const Screen = () => {
     <div className={styles.screenWrapper}>
       <div
         className={styles.battery}
-        // TODO: попробовать заменить на react-transition-group
+        // TODO: replace by styled css
         style={{ opacity: batteryIsActivated ? "1" : "0" }}
       />
       <div
         className={styles.screen}
+        // TODO: replace by styled css
         style={{ opacity: screenIsActivated ? "1" : "0" }}
       >
         {gameIsStarted ? (
