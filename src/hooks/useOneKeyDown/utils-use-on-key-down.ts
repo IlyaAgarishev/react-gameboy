@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import ControlKey from "../../models/ControlKey";
 
-// TODO: Добавить "Space" и "g" в ControlKey
-export type RequestedKey = ControlKey | "Space" | "g";
+// TODO: Добавить "Space" и "Tab" в ControlKey
+export type RequestedKey = ControlKey | "Space" | "Tab";
 
 export interface IKey {
   key: string;

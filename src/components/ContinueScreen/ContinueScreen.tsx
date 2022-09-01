@@ -9,10 +9,10 @@ const ContinueScreen = () => {
   const score = useAppSelector((state) => state.snakeReducer.score);
   const bestScore = useAppSelector((state) => state.snakeReducer.bestScore);
 
-  const keyDownData = useOnKeyDown({ requestedKeys: "g" });
+  const keyDownData = useOnKeyDown({ requestedKeys: "Tab" });
 
   useEffect(() => {
-    if (keyDownData.key === "g") {
+    if (keyDownData.key === "Tab") {
       window.open("https://github.com/IlyaAgarishev/react-gameboy", "_blank");
     }
   }, [keyDownData]);
@@ -40,7 +40,7 @@ const ContinueScreen = () => {
         </a>
       ) : (
         <div>
-          Press <span className={styles.spaceButtonOnScreen}>"G"</span> to see
+          Press <span className={styles.spaceButtonOnScreen}>"Tab"</span> to see
           the
           <span style={{ color: "#afafaf" }}> github</span> project
         </div>
