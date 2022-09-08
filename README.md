@@ -1,3 +1,7 @@
+
+![Gameboy](https://i.imgur.com/ixqm4zd.png)
+
+
 ### React Gameboy
 
 #### Play now: https://react-gameboy.netlify.app/
@@ -7,7 +11,6 @@ The main idea was to create my own game logic without using canvas or any side g
 So the game engine is just written with pure js and react.
 
 ![Gameboy](https://i.imgur.com/hc96tls.gif)
-
 
 #### Mobile optimized:
 ![Mobile Gameboy](https://i.imgur.com/wowXW6C.gif)
