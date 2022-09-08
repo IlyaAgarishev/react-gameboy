@@ -1,5 +1,5 @@
 
-![Gameboy](https://i.imgur.com/ixqm4zd.png)
+![Gameboy](https://i.imgur.com/V3KBWEs.png)
 
 
 ### React Gameboy
