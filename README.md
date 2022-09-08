@@ -7,9 +7,12 @@
 ### Play now: https://react-gameboy.netlify.app/
 
 ### About
-The main idea was to create my own game logic without using canvas or any side game library. Snake 🐍 mechanics is written with help of custom written hooks. So the whole game engine is just written with pure js and react. Below you can find more information about how this logic works.
+The main idea was to create my own game logic without using canvas or any side game library. Snake 🐍 mechanics is written with help of custom written hooks. So the whole game engine is just written with pure js and react. Below you can find more information about how this whole mechanism works.
 
 ![Gameboy](https://i.imgur.com/hc96tls.gif)
+
+### How it works
+All logic is broken down into several hooks
 
 ### Mobile optimized:
 ![Mobile Gameboy](https://i.imgur.com/wowXW6C.gif)
