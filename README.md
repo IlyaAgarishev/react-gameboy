@@ -18,9 +18,16 @@ Then `GameplayScreen` component calls useSnake hook
 ```javascript
 const snakeData = useSnake();
 ```
-So snakeData contains all the information needed to render the whole game snake logic in UI.
+So `snakeData` contains all the information needed to render the whole game snake logic in UI.
+The `snakeData` is rendered on the special ui grid.
 
-### Mobile optimized:
+The grid is just a matrix with a size of 144 elements:
+```javascript
+const sizeOfMatrix: number = 144;
+const matrix: Array<number> = [...Array(sizeOfMatrix)].map((el, i) => i);
+```
+
+### Fully mobile optimized:
 ![Mobile Gameboy](https://i.imgur.com/wowXW6C.gif)
 
 ### How to start locally
