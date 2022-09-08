@@ -14,6 +14,12 @@ The main idea was to create my own game logic without using canvas or any side g
 ### How it works
 All logic is broken down into several hooks: `useSnakeMotion`, `useSnakeHasFailed`, `useSnakeColor`, `useRandomFoodCoordinate`, `useLastControlKeyPressed`. And the main hook `useSnake` simply combines the work of above hooks.
 
+Then `GameplayScreen` component calls useSnake hook 
+```javascript
+const snakeData = useSnake();
+```
+So snakeData contains all the information needed to render the whole game snake logic in UI.
+
 ### Mobile optimized:
 ![Mobile Gameboy](https://i.imgur.com/wowXW6C.gif)
 
