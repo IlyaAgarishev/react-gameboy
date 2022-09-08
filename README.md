@@ -2,7 +2,7 @@
 ![Gameboy](https://i.imgur.com/NVd0JE7.png)
 
 
-### React Gameboy
+# React Gameboy 🐍🍎🎮
 
 #### Play now: https://react-gameboy.netlify.app/
 
