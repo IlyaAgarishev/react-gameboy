@@ -22,5 +22,5 @@ So the game engine is just written with pure js and react.
 
 ### Technologies used
 - React
-- Redux
+- Redux Toolkit
 - Typescript
