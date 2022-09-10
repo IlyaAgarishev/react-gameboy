@@ -33,6 +33,11 @@ const matrix: Array<number> = [...Array(sizeOfMatrix)].map((el, i) => i);
 ### Fully mobile optimized:
 ![Mobile Gameboy](https://i.imgur.com/wowXW6C.gif)
 
+
+### My best score is 38! Can you beat my record ?
+![Best score](https://i.imgur.com/DDB9cvQ.png)
+
+
 ### How to start locally
 
 1.  `npm install` - install all dependencies
