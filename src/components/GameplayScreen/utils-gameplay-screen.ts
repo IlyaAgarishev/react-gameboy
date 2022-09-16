@@ -2,6 +2,10 @@ import { Colors } from "../../enums/Colors";
 import { Coordinates } from "../../models/SnakeState";
 import styles from "./GameplayScreen.module.css";
 
+export const getFilter = (blur: boolean): string => {
+  return blur ? "blur(6px)" : "none";
+};
+
 enum EnvironmentColors {
   SquareBackground = "#3A3C39",
   SquareBorder = "#333532",

@@ -1,6 +1,6 @@
 import { matrix } from "../../constants";
 import useSnake from "../../hooks/useSnake/useSnake";
-import { getGameSquareData } from "./utils-gameplay-screen";
+import { getFilter, getGameSquareData } from "./utils-gameplay-screen";
 import styles from "./GameplayScreen.module.css";
 import React from "react";
 
@@ -14,7 +14,8 @@ const GameplayScreen: React.FC<IGameplayScreen> = ({ blur }) => {
   return (
     <div
       className={styles.gameplayScreen}
-      style={{ filter: blur ? "blur(6px)" : "none" }}
+      // TODO: replace by styled css
+      style={{ filter: getFilter(blur) }}
     >
       {matrix.map((el, index) => {
         const { background, border, className } = getGameSquareData({

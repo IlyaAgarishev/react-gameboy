@@ -5,6 +5,7 @@ import ContinueScreen from "../ContinueScreen";
 import GameplayScreen from "../GameplayScreen";
 import HomeScreen from "../HomeScreen";
 import styles from "./Screen.module.css";
+import { getOpacity } from "./utils-screen";
 
 const Screen = () => {
   const snakeHasFailed = useAppSelector(
@@ -20,12 +21,12 @@ const Screen = () => {
       <div
         className={styles.battery}
         // TODO: replace by styled css
-        style={{ opacity: batteryIsActivated ? "1" : "0" }}
+        style={{ opacity: getOpacity(batteryIsActivated) }}
       />
       <div
         className={styles.screen}
         // TODO: replace by styled css
-        style={{ opacity: screenIsActivated ? "1" : "0" }}
+        style={{ opacity: getOpacity(screenIsActivated) }}
       >
         {gameIsStarted ? (
           <>
