@@ -12,7 +12,7 @@ enum EnvironmentColors {
 }
 
 // getBorder logic
-const getBorder = (snakeHasFailed: boolean): string => {
+export const getBorder = (snakeHasFailed: boolean): string => {
   if (snakeHasFailed) {
     return `1px solid ${Colors.Red}`;
   }
