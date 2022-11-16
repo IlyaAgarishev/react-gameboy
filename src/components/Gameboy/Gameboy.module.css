@@ -21,6 +21,13 @@
   height: 50%;
 }
 
+@media screen and (max-height: 840px) {
+  .gameboy {
+    height: var(--desktop-min-height-gameboy);
+    width: var(--desktop-min-width-gameboy);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .gameboy {
     width: var(--mobile-width-gameboy);

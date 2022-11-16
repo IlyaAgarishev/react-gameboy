@@ -2,6 +2,10 @@
   --main-grey: #e0e0e0;
   --desktop-width-gameboy: 31.25rem;
   --desktop-height-gameboy: 50rem;
+
+  --desktop-min-width-gameboy: 26rem;
+  --desktop-min-height-gameboy: 42rem;
+
   --mobile-width-gameboy: 18rem;
   --mobile-height-gameboy: 31rem;
 }
