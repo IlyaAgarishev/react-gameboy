@@ -10,6 +10,8 @@ The main idea was to create my own game logic without using canvas or any side g
 
 You have control buttons such as arrows and space. You can use your keyboard or mouse click. Also you can use tap on your smartophone to interect with UI.
 
+It's a good example how you can solve a hard task just using your imagination and creativity.
+
 ![Gameboy](https://i.imgur.com/hc96tls.gif)
 
 ### How it works
