@@ -40,7 +40,7 @@ const matrix: Array<number> = [...Array(sizeOfMatrix)].map((el, i) => i);
 
 ### My best score is 38! Can you beat my record ?
 
-![Best score](https://i.imgur.com/DDB9cvQ.png)
+![Best score](https://i.imgur.com/i2aXNLz.png)
 
 ### How to start locally
 
