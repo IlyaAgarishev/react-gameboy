@@ -38,7 +38,7 @@ const matrix: Array<number> = [...Array(sizeOfMatrix)].map((el, i) => i);
 
 ![Mobile Gameboy](https://i.imgur.com/wowXW6C.gif)
 
-### My best score is 38! Can you beat my record ?
+### My best score is 40! Can you beat my record ?
 
 ![Best score](https://i.imgur.com/i2aXNLz.png)
 
